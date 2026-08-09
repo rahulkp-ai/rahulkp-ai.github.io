@@ -5,3 +5,5 @@
 - [x] Update "Let’s Collaborate" cards: replace Kaggle with Hugging Face and add Google Scholar card
 - [x] Verify by running/opening index.html and checking: research card layout, scroller dots behavior, collaboration cards
 
+-modified
+- moghgvh

@@ -769,11 +769,6 @@ document.getElementById('research-grid').innerHTML = papers.map(renderPaper).joi
   window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(reinit, 180); });
 })();
 
-/* ===== Certification helpers ===== */
-const cUrl  = id => `https://www.coursera.org/account/accomplishments/verify/${id}`;
-const cProf = id => `https://www.coursera.org/account/accomplishments/professional-cert/${id}`;
-const C  = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cUrl(id)});
-const CP = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cProf(id)});
 
 /* ===== TECH STACK CATEGORIES (10) ===== */
 const techCategories = [
@@ -901,6 +896,12 @@ const techCategories = [
   },
 ];
 
+/* ===== Certification helpers ===== */
+const cUrl  = id => `https://www.coursera.org/account/accomplishments/verify/${id}`;
+const cProf = id => `https://www.coursera.org/account/accomplishments/professional-cert/${id}`;
+const C  = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cUrl(id)});
+const CP = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cProf(id)});
+
 /* ===== CERTIFICATION CATEGORIES (10) ===== */
 const certCategories = [
   { n:1, title:'Artificial Intelligence & Generative AI', icon:'bi-cpu', certs:[
@@ -933,6 +934,7 @@ const certCategories = [
       C('UC Davis','SQL for Data Science','FD4Q2PG62LDM','bi-database'),
   ]},
   { n:4, title:'MLOps & AI Infrastructure', icon:'bi-gear-wide-connected', certs:[
+      C('Duke University','MLOps | Machine Learning Operations Specialization','MLOpsDuke.jpeg','bi-gear-wide-connected'),
       C('Duke University','MLOps Specialization — Course 1','UCY8YLI6L9MZ','bi-gear-wide-connected'),
       C('Duke University','MLOps Specialization — Course 2','59RGIBQ7SCU7','bi-gear-wide-connected'),
       C('Duke University','MLOps Specialization — Course 3','AQNWLT32VQKQ','bi-gear-wide-connected'),

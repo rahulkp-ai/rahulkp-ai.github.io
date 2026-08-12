@@ -253,3 +253,10 @@ git push origin main
 ```
 
 ---
+
+# Local update
+
+```bash
+git checkout main
+git pull origin main
+```

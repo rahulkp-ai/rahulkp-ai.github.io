@@ -50,75 +50,96 @@ const allProjects = [
     github: '#', demo: '#', flagship: true
   },
   {
-    title: 'MLOps Deployment Platform',
-    desc: 'Scalable MLOps platform with Docker, Kubernetes and CI/CD pipelines, built for reliable, secure, automated production deployments. It integrates automated rollback strategies triggered by anomaly detection, ensuring zero-downtime releases across multi-region clusters. Model versioning and lineage tracking are handled through a centralised registry, giving full auditability of every deployed artefact. Role-based access control and secrets management keep the pipeline compliant with enterprise security standards.',
-    long: 'A fully containerised MLOps infrastructure for training, versioning, deploying, and monitoring ML models at scale. Features automated CI/CD pipelines with GitHub Actions, model registry backed by MLflow, Kubernetes-managed inference pods, and Prometheus/Grafana dashboards for real-time drift detection.',
-    highlights: ['MLflow model registry','K8s inference pods','CI/CD automation','Drift detection dashboards'],
-    tags: ['Docker','K8s','MLflow'],
-    imgs: ['images/projects/3.jpg','images/projects/4.jpg'],
-    meta: [{label:'Stack', val:'Docker, Kubernetes, MLflow, GitHub Actions'},{label:'Status', val:'Production'},{label:'Domain', val:'MLOps / Infrastructure'}],
-    github: '#', demo: '#', flagship: false
+    title       : 'Ann-foundation',
+    desc        : 'Built an autograd engine and Multi-Layer Perceptron (MLP) from scratch in Python, implementing computational graphs, automatic differentiation, backpropagation, and gradient-based optimization without ML frameworks. Designed a dynamic computational graph to track mathematical operations and dependencies between values. Implemented reverse-mode automatic differentiation and recursive backpropagation for efficient gradient computation. Developed and trained an MLP using custom neural-network layers, activation functions, loss functions, and gradient-descent optimization.',
+    long        : 'This project implements the core foundations of neural-network training from the ground up, without relying on high-level deep-learning frameworks. The custom autograd engine builds a dynamic computational graph during forward operations and records the relationships between values required for gradient computation. Reverse-mode automatic differentiation traverses this graph backward from the loss, recursively applying the chain rule to calculate gradients for trainable parameters. On top of the autograd system, a Multi-Layer Perceptron (MLP) was implemented with custom layers, activation functions, loss functions, and gradient-descent optimization for model training. The project provides a practical understanding of how automatic differentiation, backpropagation, parameter updates, and neural-network learning work internally at a fundamental level.',
+    highlights  : ['Custom Autograd Engine',
+                   'Reverse-Mode Backprop',
+                   'Dynamic Graph Construction',
+                   'Zero-Framework Architecture',
+                   'Automated CI/CD Testing',
+                   'Interactive Web Visualizer'],
+
+    tags        : ['Python','Neural Networks', 'Autograd', 'NumPy'],
+    imgs        : ['images/projects/Ann-foundation-01.png',
+                    'images/projects/Ann-foundation-02.png',
+                    'images/projects/Ann-foundation-03.png'],
+
+    meta        : [{label:'Stack', val:'Gradio, Hugging Face Spaces, Pytest'},
+                   {label:'Status', val:'Active & Deployed'},
+                   {label:'Domain', val:'Deep-Learning'}],
+    github      : 'https://github.com/rahulkp-ai/ann-foundation', demo: 'https://huggingface.co/spaces/rahulkp-ai/ann-foundation', flagship: false
   },
-  {
-    title: 'Time-Series Forecasting',
-    desc: 'LSTM-based forecasting system for financial market prediction, featuring attention mechanisms and rigorous statistical backtesting. The system ingests live tick data and re-trains incrementally to adapt to shifting market regimes without full retraining cycles. Confidence intervals are calibrated using conformal prediction, giving traders quantifiable uncertainty bounds around every forecast. A risk-adjusted backtesting harness benchmarks strategy performance against multiple baseline models across varied market conditions.',
-    long: 'A deep learning forecasting system using stacked LSTM networks trained on OHLCV financial data. Incorporates attention mechanisms for long-range dependency capture. Features walk-forward validation, Bayesian hyperparameter tuning via Optuna, and an interactive Plotly dashboard for forecast visualisation.',
-    highlights: ['Attention-augmented LSTM','Walk-forward validation','Optuna hyperparameter tuning','Plotly dashboard'],
-    tags: ['LSTM','TensorFlow','Pandas'],
-    imgs: ['images/projects/4.jpg','images/projects/5.jpg'],
-    meta: [{label:'Stack', val:'TensorFlow, Pandas, Optuna, Plotly'},{label:'Status', val:'Research'},{label:'Domain', val:'Finance / Time-Series'}],
-    github: '#', demo: '#', flagship: false
-  },
-  {
-    title: 'NLP Sentiment Engine',
-    desc: 'Transformer-based sentiment analysis API serving 1M+ requests/day with low-latency, fault-tolerant, horizontally autoscaled cloud infrastructure. Requests are load-balanced across multiple availability zones to guarantee resilience during sudden traffic spikes. A circuit-breaker pattern isolates failing downstream dependencies to prevent cascading outages across the service mesh. Continuous model evaluation against a labelled feedback loop keeps sentiment accuracy stable as language patterns evolve over time.',
-    long: 'High-throughput sentiment analysis service built on a fine-tuned BERT model. Supports multi-label classification across 5 sentiment classes. Deployed as a microservice with async inference batching, Redis caching, and a horizontal autoscaler. Maintains 99.9% uptime while serving over 1M requests per day.',
-    highlights: ['Fine-tuned BERT','Redis response caching','Async inference batching','99.9% uptime SLA'],
-    tags: ['NLP','BERT','FastAPI'],
-    imgs: ['images/projects/5.jpg','images/projects/2.jpg'],
-    meta: [{label:'Stack', val:'PyTorch, HuggingFace, FastAPI, Redis'},{label:'Status', val:'Production'},{label:'Domain', val:'NLP / Backend'}],
-    github: '#', demo: '#', flagship: false
-  },
-  {
-    title: 'Graph Neural Network Classifier',
-    desc: 'Node classification and link prediction on citation and social networks using GCN/GAT architectures, with detailed embedding visualisation and ablation studies. The framework supports both transductive and inductive learning settings, enabling generalisation to previously unseen nodes. Hyperparameter search across layer depth, attention heads, and dropout rates is automated via grid search with early stopping. Results are benchmarked against classical baselines including node2vec and DeepWalk for added context.',
-    long: 'A research-driven project implementing Graph Convolutional Networks (GCN) and Graph Attention Networks (GAT) for node classification on benchmark citation datasets (Cora, CiteSeer). The pipeline includes graph preprocessing, adjacency normalisation, mini-batch neighbourhood sampling for large graphs, and a comparison study between spectral and spatial GNN approaches. Visualised learned embeddings using t-SNE and UMAP.',
-    highlights: ['GCN + GAT architectures','Mini-batch neighbourhood sampling','t-SNE/UMAP embedding visualisation','Benchmark on Cora & CiteSeer'],
-    tags: ['PyTorch','DGL','NetworkX'],
-    imgs: ['images/projects/3.jpg','images/projects/1.jpg'],
-    meta: [{label:'Stack', val:'PyTorch, DGL, NetworkX, scikit-learn'},{label:'Status', val:'Research'},{label:'Domain', val:'Graph ML'}],
-    github: '#', demo: '#', flagship: false
-  },
-  {
-    title: 'Semantic Search Engine',
-    desc: 'Dense retrieval system with bi-encoder embeddings and FAISS vector indexing for document search, delivering consistent sub-50ms query latency at scale. Query understanding includes synonym expansion and spelling correction to improve recall on noisy user input. The indexing layer supports incremental updates so new documents become searchable within minutes of ingestion. A feedback-driven relevance tuning loop continuously adjusts ranking weights based on click-through signals.',
-    long: 'A semantic search service built on bi-encoder sentence embeddings and FAISS for approximate nearest-neighbour retrieval over a 1M-document corpus. Supports hybrid BM25 + dense retrieval with RRF re-ranking. Exposes a REST search API with sub-50ms p99 latency. Indexing pipeline processes documents in parallel using multiprocessing and periodic index updates via a cron-scheduled job.',
-    highlights: ['Bi-encoder + FAISS ANN','Hybrid BM25 + dense retrieval','Sub-50ms p99 latency','1M-doc parallel indexing'],
-    tags: ['FAISS','HuggingFace','FastAPI'],
-    imgs: ['images/projects/2.jpg','images/projects/5.jpg'],
-    meta: [{label:'Stack', val:'FAISS, Sentence-Transformers, FastAPI, BM25'},{label:'Status', val:'Production'},{label:'Domain', val:'NLP / Search'}],
-    github: '#', demo: '#', flagship: false
-  },
-  {
-    title: 'AutoML Experiment Tracker',
-    desc: 'Lightweight MLflow-based experiment tracking dashboard with automated hyperparameter sweeps and streamlined one-click model promotion workflows end-to-end. Each experiment run is automatically tagged with dataset version and code commit hash for full reproducibility. The dashboard surfaces leaderboard views comparing model families side-by-side across custom metrics. Slack notifications alert the team the moment a new best-performing model clears the promotion threshold.',
-    long: 'A self-hosted AutoML experimentation platform wrapping MLflow, Optuna, and a custom Streamlit dashboard. Runs parallelised hyperparameter sweeps across model families (XGBoost, LightGBM, neural nets) using Optuna\'s TPE sampler. Tracks metrics, artefacts, and environment metadata per trial. Supports one-click model promotion to a staging registry and diff-based run comparison for ablation studies.',
-    highlights: ['Optuna TPE hyperparameter sweeps','Parallel trial execution','One-click model promotion','Ablation run comparison'],
-    tags: ['MLflow','Optuna','Streamlit'],
-    imgs: ['images/projects/4.jpg','images/projects/3.jpg'],
-    meta: [{label:'Stack', val:'MLflow, Optuna, Streamlit, XGBoost, LightGBM'},{label:'Status', val:'Internal Tool'},{label:'Domain', val:'MLOps / AutoML'}],
-    github: '#', demo: '#', flagship: false
-  },
-  {
-    title: 'Multimodal RAG System',
-    desc: 'Retrieval-augmented generation pipeline handling text, tables, and images from PDF documents, with grounded, citation-aware multi-turn source attribution support. Table structures are parsed and linearised into a query-friendly format so numeric data remains fully queryable alongside prose. An answer-verification step cross-checks generated claims against retrieved source spans to reduce hallucination. Every retrieval decision is logged for downstream auditing, evaluation, and continuous quality improvement.',
-    long: 'A multimodal RAG system that ingests PDF documents and extracts text, tables, and embedded images into a unified vector store. Uses ColPali-style late interaction for image patch retrieval alongside text embeddings. LLM responses are grounded via hybrid retrieval and a context-compression step that prunes irrelevant passages before generation. Supports streamed multi-turn conversations with source attribution.',
-    highlights: ['Multimodal PDF ingestion','ColPali image patch retrieval','Context compression before generation','Source-attributed streaming responses'],
-    tags: ['LangChain','Chroma','Unstructured'],
-    imgs: ['images/projects/1.jpg','images/projects/2.jpg'],
-    meta: [{label:'Stack', val:'LangChain, Chroma, Unstructured, GPT-4o'},{label:'Status', val:'Prototype'},{label:'Domain', val:'GenAI / RAG'}],
-    github: '#', demo: '#', flagship: false
-  },
+  // {
+  //   title: 'MLOps Deployment Platform',
+  //   desc: 'Scalable MLOps platform with Docker, Kubernetes and CI/CD pipelines, built for reliable, secure, automated production deployments. It integrates automated rollback strategies triggered by anomaly detection, ensuring zero-downtime releases across multi-region clusters. Model versioning and lineage tracking are handled through a centralised registry, giving full auditability of every deployed artefact. Role-based access control and secrets management keep the pipeline compliant with enterprise security standards.',
+  //   long: 'A fully containerised MLOps infrastructure for training, versioning, deploying, and monitoring ML models at scale. Features automated CI/CD pipelines with GitHub Actions, model registry backed by MLflow, Kubernetes-managed inference pods, and Prometheus/Grafana dashboards for real-time drift detection.',
+  //   highlights: ['MLflow model registry','K8s inference pods','CI/CD automation','Drift detection dashboards'],
+  //   tags: ['Docker','K8s','MLflow'],
+  //   imgs: ['images/projects/3.jpg','images/projects/4.jpg'],
+  //   meta: [{label:'Stack', val:'Docker, Kubernetes, MLflow, GitHub Actions'},{label:'Status', val:'Production'},{label:'Domain', val:'MLOps / Infrastructure'}],
+  //   github: '#', demo: '#', flagship: false
+  // },
+  // {
+  //   title: 'Time-Series Forecasting',
+  //   desc: 'LSTM-based forecasting system for financial market prediction, featuring attention mechanisms and rigorous statistical backtesting. The system ingests live tick data and re-trains incrementally to adapt to shifting market regimes without full retraining cycles. Confidence intervals are calibrated using conformal prediction, giving traders quantifiable uncertainty bounds around every forecast. A risk-adjusted backtesting harness benchmarks strategy performance against multiple baseline models across varied market conditions.',
+  //   long: 'A deep learning forecasting system using stacked LSTM networks trained on OHLCV financial data. Incorporates attention mechanisms for long-range dependency capture. Features walk-forward validation, Bayesian hyperparameter tuning via Optuna, and an interactive Plotly dashboard for forecast visualisation.',
+  //   highlights: ['Attention-augmented LSTM','Walk-forward validation','Optuna hyperparameter tuning','Plotly dashboard'],
+  //   tags: ['LSTM','TensorFlow','Pandas'],
+  //   imgs: ['images/projects/4.jpg','images/projects/5.jpg'],
+  //   meta: [{label:'Stack', val:'TensorFlow, Pandas, Optuna, Plotly'},{label:'Status', val:'Research'},{label:'Domain', val:'Finance / Time-Series'}],
+  //   github: '#', demo: '#', flagship: false
+  // },
+  // {
+  //   title: 'NLP Sentiment Engine',
+  //   desc: 'Transformer-based sentiment analysis API serving 1M+ requests/day with low-latency, fault-tolerant, horizontally autoscaled cloud infrastructure. Requests are load-balanced across multiple availability zones to guarantee resilience during sudden traffic spikes. A circuit-breaker pattern isolates failing downstream dependencies to prevent cascading outages across the service mesh. Continuous model evaluation against a labelled feedback loop keeps sentiment accuracy stable as language patterns evolve over time.',
+  //   long: 'High-throughput sentiment analysis service built on a fine-tuned BERT model. Supports multi-label classification across 5 sentiment classes. Deployed as a microservice with async inference batching, Redis caching, and a horizontal autoscaler. Maintains 99.9% uptime while serving over 1M requests per day.',
+  //   highlights: ['Fine-tuned BERT','Redis response caching','Async inference batching','99.9% uptime SLA'],
+  //   tags: ['NLP','BERT','FastAPI'],
+  //   imgs: ['images/projects/5.jpg','images/projects/2.jpg'],
+  //   meta: [{label:'Stack', val:'PyTorch, HuggingFace, FastAPI, Redis'},{label:'Status', val:'Production'},{label:'Domain', val:'NLP / Backend'}],
+  //   github: '#', demo: '#', flagship: false
+  // },
+  // {
+  //   title: 'Graph Neural Network Classifier',
+  //   desc: 'Node classification and link prediction on citation and social networks using GCN/GAT architectures, with detailed embedding visualisation and ablation studies. The framework supports both transductive and inductive learning settings, enabling generalisation to previously unseen nodes. Hyperparameter search across layer depth, attention heads, and dropout rates is automated via grid search with early stopping. Results are benchmarked against classical baselines including node2vec and DeepWalk for added context.',
+  //   long: 'A research-driven project implementing Graph Convolutional Networks (GCN) and Graph Attention Networks (GAT) for node classification on benchmark citation datasets (Cora, CiteSeer). The pipeline includes graph preprocessing, adjacency normalisation, mini-batch neighbourhood sampling for large graphs, and a comparison study between spectral and spatial GNN approaches. Visualised learned embeddings using t-SNE and UMAP.',
+  //   highlights: ['GCN + GAT architectures','Mini-batch neighbourhood sampling','t-SNE/UMAP embedding visualisation','Benchmark on Cora & CiteSeer'],
+  //   tags: ['PyTorch','DGL','NetworkX'],
+  //   imgs: ['images/projects/3.jpg','images/projects/1.jpg'],
+  //   meta: [{label:'Stack', val:'PyTorch, DGL, NetworkX, scikit-learn'},{label:'Status', val:'Research'},{label:'Domain', val:'Graph ML'}],
+  //   github: '#', demo: '#', flagship: false
+  // },
+  // {
+  //   title: 'Semantic Search Engine',
+  //   desc: 'Dense retrieval system with bi-encoder embeddings and FAISS vector indexing for document search, delivering consistent sub-50ms query latency at scale. Query understanding includes synonym expansion and spelling correction to improve recall on noisy user input. The indexing layer supports incremental updates so new documents become searchable within minutes of ingestion. A feedback-driven relevance tuning loop continuously adjusts ranking weights based on click-through signals.',
+  //   long: 'A semantic search service built on bi-encoder sentence embeddings and FAISS for approximate nearest-neighbour retrieval over a 1M-document corpus. Supports hybrid BM25 + dense retrieval with RRF re-ranking. Exposes a REST search API with sub-50ms p99 latency. Indexing pipeline processes documents in parallel using multiprocessing and periodic index updates via a cron-scheduled job.',
+  //   highlights: ['Bi-encoder + FAISS ANN','Hybrid BM25 + dense retrieval','Sub-50ms p99 latency','1M-doc parallel indexing'],
+  //   tags: ['FAISS','HuggingFace','FastAPI'],
+  //   imgs: ['images/projects/2.jpg','images/projects/5.jpg'],
+  //   meta: [{label:'Stack', val:'FAISS, Sentence-Transformers, FastAPI, BM25'},{label:'Status', val:'Production'},{label:'Domain', val:'NLP / Search'}],
+  //   github: '#', demo: '#', flagship: false
+  // },
+  // {
+  //   title: 'AutoML Experiment Tracker',
+  //   desc: 'Lightweight MLflow-based experiment tracking dashboard with automated hyperparameter sweeps and streamlined one-click model promotion workflows end-to-end. Each experiment run is automatically tagged with dataset version and code commit hash for full reproducibility. The dashboard surfaces leaderboard views comparing model families side-by-side across custom metrics. Slack notifications alert the team the moment a new best-performing model clears the promotion threshold.',
+  //   long: 'A self-hosted AutoML experimentation platform wrapping MLflow, Optuna, and a custom Streamlit dashboard. Runs parallelised hyperparameter sweeps across model families (XGBoost, LightGBM, neural nets) using Optuna\'s TPE sampler. Tracks metrics, artefacts, and environment metadata per trial. Supports one-click model promotion to a staging registry and diff-based run comparison for ablation studies.',
+  //   highlights: ['Optuna TPE hyperparameter sweeps','Parallel trial execution','One-click model promotion','Ablation run comparison'],
+  //   tags: ['MLflow','Optuna','Streamlit'],
+  //   imgs: ['images/projects/4.jpg','images/projects/3.jpg'],
+  //   meta: [{label:'Stack', val:'MLflow, Optuna, Streamlit, XGBoost, LightGBM'},{label:'Status', val:'Internal Tool'},{label:'Domain', val:'MLOps / AutoML'}],
+  //   github: '#', demo: '#', flagship: false
+  // },
+  // {
+  //   title: 'Multimodal RAG System',
+  //   desc: 'Retrieval-augmented generation pipeline handling text, tables, and images from PDF documents, with grounded, citation-aware multi-turn source attribution support. Table structures are parsed and linearised into a query-friendly format so numeric data remains fully queryable alongside prose. An answer-verification step cross-checks generated claims against retrieved source spans to reduce hallucination. Every retrieval decision is logged for downstream auditing, evaluation, and continuous quality improvement.',
+  //   long: 'A multimodal RAG system that ingests PDF documents and extracts text, tables, and embedded images into a unified vector store. Uses ColPali-style late interaction for image patch retrieval alongside text embeddings. LLM responses are grounded via hybrid retrieval and a context-compression step that prunes irrelevant passages before generation. Supports streamed multi-turn conversations with source attribution.',
+  //   highlights: ['Multimodal PDF ingestion','ColPali image patch retrieval','Context compression before generation','Source-attributed streaming responses'],
+  //   tags: ['LangChain','Chroma','Unstructured'],
+  //   imgs: ['images/projects/1.jpg','images/projects/2.jpg'],
+  //   meta: [{label:'Stack', val:'LangChain, Chroma, Unstructured, GPT-4o'},{label:'Status', val:'Prototype'},{label:'Domain', val:'GenAI / RAG'}],
+  //   github: '#', demo: '#', flagship: false
+  // },
 ];
 
 const flagshipProjects = allProjects.filter(p => p.flagship);
@@ -298,7 +319,7 @@ function openProjectModal(p) {
       <div class="project-img"><img src="${p.imgs ? p.imgs[0] : p.img}" alt="${p.title}" loading="lazy"/></div>
       <div class="project-body">
         <h6 class="fw-bold">${p.title}</h6>
-        <p class="text-muted-2 small">${p.desc}</p>
+        <p class="text-muted-2 project-desc">${p.desc}</p>
         <div class="project-tags">${p.tags.map(x=>`<span>${x}</span>`).join('')}</div>
         <div class="proj-card-cta"><span class="proj-view-btn"><i class="bi bi-arrow-right-circle me-1"></i>View Details</span></div>
       </div>

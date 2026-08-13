@@ -30,56 +30,104 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // All projects — first 2 = Flagship, rest = Engineering
 const allProjects = [
   {
-    title: 'AI Vision Pipeline',
-    desc: 'End-to-end computer vision pipeline using OpenCV and PyTorch for real-time object detection.',
-    long: 'A production-grade computer vision system capable of real-time multi-class object detection. Built using PyTorch for the neural backbone and OpenCV for frame capture and pre/post-processing. Achieves sub-30ms inference on GPU-accelerated hardware. The pipeline includes data augmentation, anchor-free detection heads, and a REST API for integration. Integrated with a streaming dashboard for live monitoring and alert thresholds.',
-    highlights: ['Sub-30ms GPU inference','Anchor-free detection heads','REST API integration','Real-time monitoring dashboard'],
-    tags: ['Python','PyTorch','OpenCV'],
-    imgs: ['images/projects/1.jpg','images/projects/3.jpg','images/projects/4.jpg'],
-    meta: [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
-    github: '#', demo: '#', flagship: true
+    title       : 'AI Vision Pipeline',
+    desc        : 'End-to-end computer vision pipeline using OpenCV and PyTorch for real-time object detection.',
+    long        : 'A production-grade computer vision system capable of real-time multi-class object detection. Built using PyTorch for the neural backbone and OpenCV for frame capture and pre/post-processing. Achieves sub-30ms inference on GPU-accelerated hardware. The pipeline includes data augmentation, anchor-free detection heads, and a REST API for integration. Integrated with a streaming dashboard for live monitoring and alert thresholds.',
+    highlights  : ['Sub-30ms GPU inference','Anchor-free detection heads','REST API integration','Real-time monitoring dashboard'],
+    tags        : ['Python','PyTorch','OpenCV'],
+    imgs        : ['images/projects/1.jpg','images/projects/3.jpg','images/projects/4.jpg'],
+    meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
+    github      : '#', demo: '#', flagship: true
   },
   {
-    title: 'LLM-Powered Assistant',
-    desc: 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
-    long: 'A domain-specific conversational assistant leveraging fine-tuned large language models. The system uses retrieval-augmented generation (RAG) to ground responses in a curated knowledge base. Built on FastAPI with LangChain orchestration, it supports multi-turn memory, streaming responses, and structured output parsing. Features a vector store backed by Chroma for efficient semantic retrieval at scale.',
-    highlights: ['RAG with vector search','Multi-turn conversation memory','Streaming responses','LangChain orchestration'],
-    tags: ['LLM','FastAPI','LangChain'],
-    imgs: ['images/projects/2.jpg','images/projects/5.jpg','images/projects/1.jpg'],
-    meta: [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
-    github: '#', demo: '#', flagship: true
+    title       : 'LLM-Powered Assistant',
+    desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
+    long        : 'A domain-specific conversational assistant leveraging fine-tuned large language models. The system uses retrieval-augmented generation (RAG) to ground responses in a curated knowledge base. Built on FastAPI with LangChain orchestration, it supports multi-turn memory, streaming responses, and structured output parsing. Features a vector store backed by Chroma for efficient semantic retrieval at scale.',
+    highlights  : ['RAG with vector search','Multi-turn conversation memory','Streaming responses','LangChain orchestration'],
+    tags        : ['LLM','FastAPI','LangChain'],
+    imgs        : ['images/projects/2.jpg','images/projects/5.jpg','images/projects/1.jpg'],
+    meta        : [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
+    github      : '#', demo: '#', flagship: true
   },
+  // desc : 84 words
   {
     title       : 'Ann-foundation',
     desc        : 'Built an autograd engine and Multi-Layer Perceptron (MLP) from scratch in Python, implementing computational graphs, automatic differentiation, backpropagation, and gradient-based optimization without ML frameworks. Designed a dynamic computational graph to track mathematical operations and dependencies between values. Implemented reverse-mode automatic differentiation and recursive backpropagation for efficient gradient computation. Developed and trained an MLP using custom neural-network layers, activation functions, loss functions, and gradient-descent optimization.',
     long        : 'This project implements the core foundations of neural-network training from the ground up, without relying on high-level deep-learning frameworks. The custom autograd engine builds a dynamic computational graph during forward operations and records the relationships between values required for gradient computation. Reverse-mode automatic differentiation traverses this graph backward from the loss, recursively applying the chain rule to calculate gradients for trainable parameters. On top of the autograd system, a Multi-Layer Perceptron (MLP) was implemented with custom layers, activation functions, loss functions, and gradient-descent optimization for model training. The project provides a practical understanding of how automatic differentiation, backpropagation, parameter updates, and neural-network learning work internally at a fundamental level.',
-    highlights  : ['Custom Autograd Engine',
-                   'Reverse-Mode Backprop',
-                   'Dynamic Graph Construction',
-                   'Zero-Framework Architecture',
-                   'Automated CI/CD Testing',
-                   'Interactive Web Visualizer'],
+    highlights  : [
+                    'Custom Autograd Engine',
+                    'Reverse-Mode Backprop',
+                    'Dynamic Graph Construction',
+                    'Zero-Framework Architecture',
+                    'Automated CI/CD Testing',
+                    'Interactive Web Visualizer'
+                  ],
 
     tags        : ['Python','Neural Networks', 'Autograd', 'NumPy'],
-    imgs        : ['images/projects/Ann-foundation-01.png',
+    imgs        : [
+                    'images/projects/Ann-foundation-01.png',
                     'images/projects/Ann-foundation-02.png',
-                    'images/projects/Ann-foundation-03.png'],
+                    'images/projects/Ann-foundation-03.png'
+                  ],
 
-    meta        : [{label:'Stack', val:'Gradio, Hugging Face Spaces, Pytest'},
-                   {label:'Status', val:'Active & Deployed'},
-                   {label:'Domain', val:'Deep-Learning'}],
+    meta        : [
+                    {label:'Stack', val:'Gradio, Hugging Face Spaces, Pytest'},
+                    {label:'Status', val:'Active & Deployed'},
+                    {label:'Domain', val:'Deep-Learning'}
+                  ],
     github      : 'https://github.com/rahulkp-ai/ann-foundation', demo: 'https://huggingface.co/spaces/rahulkp-ai/ann-foundation', flagship: false
   },
-  // {
-  //   title: 'MLOps Deployment Platform',
-  //   desc: 'Scalable MLOps platform with Docker, Kubernetes and CI/CD pipelines, built for reliable, secure, automated production deployments. It integrates automated rollback strategies triggered by anomaly detection, ensuring zero-downtime releases across multi-region clusters. Model versioning and lineage tracking are handled through a centralised registry, giving full auditability of every deployed artefact. Role-based access control and secrets management keep the pipeline compliant with enterprise security standards.',
-  //   long: 'A fully containerised MLOps infrastructure for training, versioning, deploying, and monitoring ML models at scale. Features automated CI/CD pipelines with GitHub Actions, model registry backed by MLflow, Kubernetes-managed inference pods, and Prometheus/Grafana dashboards for real-time drift detection.',
-  //   highlights: ['MLflow model registry','K8s inference pods','CI/CD automation','Drift detection dashboards'],
-  //   tags: ['Docker','K8s','MLflow'],
-  //   imgs: ['images/projects/3.jpg','images/projects/4.jpg'],
-  //   meta: [{label:'Stack', val:'Docker, Kubernetes, MLflow, GitHub Actions'},{label:'Status', val:'Production'},{label:'Domain', val:'MLOps / Infrastructure'}],
-  //   github: '#', demo: '#', flagship: false
-  // },
+
+  {
+    title       : 'RankScript',
+    desc        : 'A full-stack competitive learning platform combining course management with gamified leaderboards. Built with FastAPI, Next.js, PostgreSQL, and Redis, it features end-to-end role-based access control across student, mentor, and admin workflows. A real-time engine aggregates quiz performance, assignment grades, lesson completion, and activity streaks into weighted rank scores across district, state, and national tiers. Mentors handle course lifecycles via a draft-to-approval workflow, while admins manage platform moderation with audit logs. Fully containerized with Docker and deployed across Vercel, Render, Neon, and Upstash.',
+    //long        : 'This project is a full-stack Learning Management System engineered around competitive motivation rather than passive course consumption. The backend follows a strict layered architecture — routes handle HTTP and validation, services own all business logic, and SQLAlchemy models manage persistence — spanning ten domains including auth, courses, lessons, enrollments, quizzes, assignments, and analytics. The core differentiator is the ranking engine: student activity across quiz attempts, graded assignment submissions, lesson completion, and daily activity streaks is aggregated into a single weighted rank score (40% quiz, 30% assignment, 15% completion, 15% streak), written to a dedicated rank_entries table, and served through a materialized view for fast leaderboard pagination at district, state, and national scope. Role-based access control separates student, mentor, and admin permissions end-to-end, with mentors managing course lifecycles through a draft-to-approval workflow and admins overseeing platform-wide approvals through an audit-logged review queue. JWT-based authentication with access/refresh token rotation and bcrypt password hashing secures every endpoint. The entire stack is containerized with Docker Compose for local development and deployed to production on a zero-cost infrastructure combining Vercel, Render, Neon PostgreSQL, and Upstash Redis, backed by a 266-test pytest suite covering the backend service layer.',
+    long        : 'This full-stack Learning Management System drives engagement through gamified competition rather than passive learning. Built on a strict layered backend—separating HTTP routes, business logic, and SQLAlchemy models—it spans ten domains including auth, courses, enrollments, and analytics. Its core differentiator is a weighted ranking engine aggregating quiz scores (40%), assignment grades (30%), completion rates (15%), and activity streaks (15%) into unified scores served via materialized views for fast regional leaderboard pagination. End-to-end role-based security separates student, mentor, and admin workflows, backed by JWT refresh-token rotation and bcrypt hashing. Fully containerized with Docker Compose and verified by a 266-test pytest suite, it deploys seamlessly across Vercel, Render, Neon PostgreSQL, and Upstash Redis.',
+    highlights  : [ 
+                    "Weighted Rank-Scoring Engine",
+                    "Role-Based Access Control",
+                    "Regional Leaderboards (District/State/National)",
+                    "JWT Auth with Refresh Rotation",
+                    "Admin Approval Workflows",
+                    "266-Test Backend Suite"
+                  ],
+
+    tags        : ["FastAPI", "Next.js", "PostgreSQL", "Redis", "Docker"],
+
+    imgs        : [
+                    'images/projects/RankScript-01.png',
+                    'images/projects/RankScript-02.png',
+                    'images/projects/RankScript-03.png',
+                    'images/projects/RankScript-04.png'
+                  ],
+
+    meta        : [
+                    { label: "Stack", val: "FastAPI, Next.js, PostgreSQL, Redis, Docker" },
+                    { label: "Status", val: "Active & Deployed" },
+                    { label: "Domain", val: "Full-Stack / EdTech" },
+                  ],
+
+    credentials : [
+                    { role: "Student", email: "student.lisa@test.com", password: "password" },
+                    { role: "Mentor",  email: "mentor.rajesh@test.com", password: "password" },
+                    { role: "Admin",   email: "admin@rankscript.com",   password: "password" }
+                  ],
+    demoNote    : "Backend runs on Render's free tier and sleeps after 15 minutes of inactivity — the first login may take 10–30 seconds while it wakes up.",
+
+    github      : 'https://github.com/rahulkp-ai/rankscript',
+    demo        : 'https://rankscript.vercel.app/auth/login',
+    flagship    : false
+  },
+  {
+    title: 'MLOps Deployment Platform',
+    desc: 'Scalable MLOps platform with Docker, Kubernetes and CI/CD pipelines, built for reliable, secure, automated production deployments. It integrates automated rollback strategies triggered by anomaly detection, ensuring zero-downtime releases across multi-region clusters. Model versioning and lineage tracking are handled through a centralised registry, giving full auditability of every deployed artefact. Role-based access control and secrets management keep the pipeline compliant with enterprise security standards.',
+    long: 'A fully containerised MLOps infrastructure for training, versioning, deploying, and monitoring ML models at scale. Features automated CI/CD pipelines with GitHub Actions, model registry backed by MLflow, Kubernetes-managed inference pods, and Prometheus/Grafana dashboards for real-time drift detection.',
+    highlights: ['MLflow model registry','K8s inference pods','CI/CD automation','Drift detection dashboards'],
+    tags: ['Docker','K8s','MLflow'],
+    imgs: ['images/projects/3.jpg','images/projects/4.jpg'],
+    meta: [{label:'Stack', val:'Docker, Kubernetes, MLflow, GitHub Actions'},{label:'Status', val:'Production'},{label:'Domain', val:'MLOps / Infrastructure'}],
+    github: '#', demo: '#', flagship: false
+  },
   // {
   //   title: 'Time-Series Forecasting',
   //   desc: 'LSTM-based forecasting system for financial market prediction, featuring attention mechanisms and rigorous statistical backtesting. The system ingests live tick data and re-trains incrementally to adapt to shifting market regimes without full retraining cycles. Confidence intervals are calibrated using conformal prediction, giving traders quantifiable uncertainty bounds around every forecast. A risk-adjusted backtesting harness benchmarks strategy performance against multiple baseline models across varied market conditions.',
@@ -233,6 +281,18 @@ function openProjectModal(p) {
     <div class="proj-meta-item proj-highlights-wrap">
       <span class="proj-meta-label">Highlights</span>
       <ul class="proj-highlights">${p.highlights.map(h=>`<li><i class="bi bi-check2-circle"></i>${h}</li>`).join('')}</ul>
+    </div>` : '') + (p.credentials ? `
+    <div class="proj-meta-item proj-credentials-wrap">
+      <span class="proj-meta-label">Demo Credentials</span>
+      <div class="proj-credentials-table">
+        ${p.credentials.map(c=>`
+          <div class="proj-cred-row">
+            <span class="proj-cred-role">${c.role}</span>
+            <span class="proj-cred-email">${c.email}</span>
+            <span class="proj-cred-pass">${c.password}</span>
+          </div>`).join('')}
+      </div>
+      ${p.demoNote ? `<p class="proj-demo-note"><i class="bi bi-info-circle me-1"></i>${p.demoNote}</p>` : ''}
     </div>` : '');
   document.getElementById('proj-modal-actions').innerHTML = `
     <a href="${p.github}" class="btn btn-gradient" target="_blank"><i class="bi bi-github me-2"></i>View Code</a>

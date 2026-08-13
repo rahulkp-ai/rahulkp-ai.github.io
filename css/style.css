@@ -1424,3 +1424,153 @@ timeline {
     display: none;
   }
 }
+/* Project Modal — Demo Credentials */
+.proj-credentials-wrap {
+  grid-column: 1 / -1;
+  width: 100%;
+  align-self: start !important;  
+}
+.proj-credentials-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  width: 100%;
+  height: auto !important;
+}
+.proj-cred-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: flex-start;
+  gap: 10px 14px;
+  width: 100%;
+  height: auto !important;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
+.proj-cred-role {
+  flex: 0 0 72px;
+  font-weight: 600;
+  color: var(--accent, #7c3aed);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: .04em;
+}
+.proj-cred-email {
+  flex: 1 1 200px;
+  min-width: 160px;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  color: #e2e8f0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.proj-cred-pass {
+  flex: 0 0 auto;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  color: #94a3b8;
+  background: rgba(255,255,255,0.06);
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.proj-demo-note {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* Mobile: stack role/email/password vertically, tight and top-aligned */
+@media (max-width: 640px) {
+  .proj-cred-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    height: auto !important;
+    gap: 6px !important;
+    padding: 12px 14px;
+  }
+  .proj-cred-role,
+  .proj-cred-email,
+  .proj-cred-pass {
+    flex: 0 0 auto !important;
+    width: auto;
+  }
+  .proj-cred-email {
+    width: 100%;
+    font-size: 0.82rem;
+  }
+}
+/* Project Modal — show full screenshot, no cropping */
+.proj-modal-img-wrap {
+  height: auto !important;
+  max-height: 75vh;
+  min-height: 300px;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.proj-modal-img-slide {
+  width: 100%;
+  height: auto !important;
+}
+.proj-modal-img-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 75vh;
+  object-fit: contain !important;
+}
+
+@media (max-width: 640px) {
+  .proj-modal-img-wrap { max-height: 55vh; }
+  .proj-modal-img-slide img { max-height: 55vh; }
+}
+
+/* Engineering project cards */
+.eng-card .project-img {
+  height: 210px;
+}
+.eng-card .project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.eng-card .project-body {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.eng-card .project-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 15;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 0;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .eng-card .project-img {
+    height: 170px;
+  }
+  .eng-card .project-desc {
+    -webkit-line-clamp: 14;
+  }
+}
+
+/* Mobile: only slightly tighter than desktop, not a hard cut */
+@media (max-width: 640px) {
+  .eng-card .project-img {
+    height: 90px;
+  }
+  .eng-card .project-desc {
+    -webkit-line-clamp: 15;     
+  }
+}

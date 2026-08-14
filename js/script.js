@@ -65,9 +65,10 @@ const allProjects = [
 
     tags        : ['Python','Neural Networks', 'Autograd', 'NumPy'],
     imgs        : [
-                    'images/projects/Ann-foundation-01.png',
-                    'images/projects/Ann-foundation-02.png',
-                    'images/projects/Ann-foundation-03.png'
+                    'images/projects/Engineering/Ann-foundation-01.png',
+                    'images/projects/Engineering/Ann-foundation-02.png',
+                    'images/projects/Engineering/Ann-foundation-03.png',
+                    'images/projects/Engineering/Ann-foundation-04.png',
                   ],
 
     meta        : [
@@ -81,7 +82,6 @@ const allProjects = [
   {
     title       : 'RankScript',
     desc        : 'A full-stack competitive learning platform combining course management with gamified leaderboards. Built with FastAPI, Next.js, PostgreSQL, and Redis, it features end-to-end role-based access control across student, mentor, and admin workflows. A real-time engine aggregates quiz performance, assignment grades, lesson completion, and activity streaks into weighted rank scores across district, state, and national tiers. Mentors handle course lifecycles via a draft-to-approval workflow, while admins manage platform moderation with audit logs. Fully containerized with Docker and deployed across Vercel, Render, Neon, and Upstash.',
-    //long        : 'This project is a full-stack Learning Management System engineered around competitive motivation rather than passive course consumption. The backend follows a strict layered architecture — routes handle HTTP and validation, services own all business logic, and SQLAlchemy models manage persistence — spanning ten domains including auth, courses, lessons, enrollments, quizzes, assignments, and analytics. The core differentiator is the ranking engine: student activity across quiz attempts, graded assignment submissions, lesson completion, and daily activity streaks is aggregated into a single weighted rank score (40% quiz, 30% assignment, 15% completion, 15% streak), written to a dedicated rank_entries table, and served through a materialized view for fast leaderboard pagination at district, state, and national scope. Role-based access control separates student, mentor, and admin permissions end-to-end, with mentors managing course lifecycles through a draft-to-approval workflow and admins overseeing platform-wide approvals through an audit-logged review queue. JWT-based authentication with access/refresh token rotation and bcrypt password hashing secures every endpoint. The entire stack is containerized with Docker Compose for local development and deployed to production on a zero-cost infrastructure combining Vercel, Render, Neon PostgreSQL, and Upstash Redis, backed by a 266-test pytest suite covering the backend service layer.',
     long        : 'This full-stack Learning Management System drives engagement through gamified competition rather than passive learning. Built on a strict layered backend—separating HTTP routes, business logic, and SQLAlchemy models—it spans ten domains including auth, courses, enrollments, and analytics. Its core differentiator is a weighted ranking engine aggregating quiz scores (40%), assignment grades (30%), completion rates (15%), and activity streaks (15%) into unified scores served via materialized views for fast regional leaderboard pagination. End-to-end role-based security separates student, mentor, and admin workflows, backed by JWT refresh-token rotation and bcrypt hashing. Fully containerized with Docker Compose and verified by a 266-test pytest suite, it deploys seamlessly across Vercel, Render, Neon PostgreSQL, and Upstash Redis.',
     highlights  : [ 
                     "Weighted Rank-Scoring Engine",
@@ -95,10 +95,11 @@ const allProjects = [
     tags        : ["FastAPI", "Next.js", "PostgreSQL", "Redis", "Docker"],
 
     imgs        : [
-                    'images/projects/RankScript-01.png',
-                    'images/projects/RankScript-02.png',
-                    'images/projects/RankScript-03.png',
-                    'images/projects/RankScript-04.png'
+                    'images/projects/Engineering/RankScript-01.png',
+                    'images/projects/Engineering/RankScript-02.png',
+                    'images/projects/Engineering/RankScript-03.png',
+                    'images/projects/Engineering/RankScript-04.png',
+                    'images/projects/Engineering/RankScript-05.png',
                   ],
 
     meta        : [
@@ -116,6 +117,55 @@ const allProjects = [
 
     github      : 'https://github.com/rahulkp-ai/rankscript',
     demo        : 'https://rankscript.vercel.app/auth/login',
+    flagship    : false
+  },
+
+  {
+    title       : 'PhishGuard',
+    desc        : 'This production-grade MLOps engineering project detects malicious phishing URLs in real time by deploying a robust Random Forest classifier trained on 28 carefully hand-engineered URL features. Built using Flask, scikit-learn, and Prometheus instrumentation, the application seamlessly supports real-time REST API scoring, scalable batch prediction workflows, automated data drift monitoring, and fully containerized deployments. Designed for high reliability, it incorporates the complete enterprise production stack: structured JSON logging, automated CI/CD deployment pipelines, production Kubernetes manifests, and a comprehensive Grafana dashboard for real-time end-to-end system observability.',
+    long        : 'PhishGuard goes beyond a typical ML project by implementing the full engineering stack a real ML product requires. The feature extractor derives 28 URL signals — entropy, brand impersonation, TLD analysis, subdomain depth — entirely from the URL string with no DNS lookups, achieving sub-10ms inference. A Random Forest classifier trained on ~50,000 balanced URLs from OpenPhish, URLhaus, PhishTank, Majestic Million, and Tranco achieves ~95% accuracy and ~0.98 ROC-AUC. The Flask API (gunicorn, app factory pattern) exposes /api/predict, /api/batch (50 URLs), /api/health, and /metrics endpoints with full input validation, per-request X-Request-ID middleware, and structured JSON logging via structlog. A rolling-window drift detector monitors the live phishing rate against a configurable baseline and emits structured alerts on deviation. The codebase is verified by 222 tests at 98.7% coverage across unit, integration, and regression categories, with a pytest matrix on Python 3.10 and 3.12. A multi-stage Docker build (non-root uid=1001, read-only rootfs) feeds a GitHub Actions CI pipeline that gates on lint, coverage, and image structure before pushing to GHCR. Kubernetes manifests cover HPA, init containers, and kustomize overlays for dev/staging/production environments.',
+
+    highlights  : [
+                  '28 Hand-Engineered URL Features',
+                  '~95% Accuracy · ~0.98 ROC-AUC',
+                  '222 Tests · 98.7% Coverage',
+                  'Prometheus Metrics + Drift Detection',
+                  'Kubernetes with HPA + Kustomize Overlays',
+                  'GitHub Actions CI/CD + GHCR Image Push'
+                ],
+
+    tags        : ['Python', 'Flask', 'scikit-learn', 'Docker', 'Kubernetes'],
+
+    imgs        : [
+                  'images/projects/Engineering/PhishGuard-01.png',
+                  'images/projects/Engineering/PhishGuard-02.png',
+                  'images/projects/Engineering/PhishGuard-03.png',
+                  'images/projects/Engineering/PhishGuard-04.png',
+                  'images/projects/Engineering/PhishGuard-05.png',
+                  'images/projects/Engineering/PhishGuard-06.png',
+                ],
+
+    meta        : [
+                  { label: 'Stack',  val: 'Flask, scikit-learn, Docker, Kubernetes, Prometheus' },
+                  { label: 'Status', val: 'Live & Deployed' },
+                  { label: 'Domain', val: 'MLOps / Cybersecurity' },
+                ],
+
+    credentials : [
+                { role: "Phishing URLs",        email: "",                                                        password: "" },
+                { role: "High Risk",            email: "http://paypal-verify-account.tk/login/confirm",           password: "" },
+                { role: "High Risk",            email: "http://192.168.1.1/admin/login",                          password: "" },
+                { role: "High Risk",            email: "http://secure-banking-update.xyz/account/verify",         password: "" },
+                { role: "Legitimate URLs",      email: "",                                                        password: "" },
+                { role: "Safe",                 email: "https://github.com/rahulkp-ai/phishguard",                password: "" },
+                { role: "Safe",                 email: "https://www.google.com/search?q=phishing+detection",      password: "" },
+                { role: "Safe",                 email: "https://stackoverflow.com/questions/tagged/flask",         password: "" },
+              ],
+
+    demoNote    : "Deployed on Render's free tier — the first request may take 10–30 seconds to wake up. Submit any URL to the predict endpoint and get a real-time phishing classification with confidence score and risk level.",
+
+    github      : 'https://github.com/rahulkp-ai/phishguard',
+    demo        : 'https://phishguard-xozj.onrender.com',
     flagship    : false
   },
   {

@@ -1507,35 +1507,50 @@ timeline {
     font-size: 0.82rem;
   }
 }
-/* Project Modal — show full screenshot, no cropping */
-.proj-modal-img-wrap {
-  height: auto !important;
-  max-height: 75vh;
-  min-height: 300px;
-  background: rgba(0, 0, 0, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.proj-modal-img-slide {
-  width: 100%;
-  height: auto !important;
-}
-.proj-modal-img-slide img {
-  width: 100%;
-  height: auto;
-  max-height: 75vh;
-  object-fit: contain !important;
+
+/*Project Detail Modal — Screenshot & Spacing Adjustments*/
+
+/* Target the banner container inside the modal */
+#proj-modal .proj-modal-content > div:first-child,
+#proj-modal .proj-modal-img-wrap,
+#proj-modal .proj-modal-img-wrap-legacy {
+  height: 360px !important;
+  min-height: 360px !important;
+  max-height: 360px !important;
+  width: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: #0a0a18 !important;
 }
 
-@media (max-width: 640px) {
-  .proj-modal-img-wrap { max-height: 55vh; }
-  .proj-modal-img-slide img { max-height: 55vh; }
+/* Force image to stretch edge-to-edge on desktop */
+#proj-modal img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important; /* Edge-to-edge fill on desktop */
+  object-position: top center !important; /* Keeps header/UI visible */
+  display: block !important;
 }
 
+/* Keep clean layout for mobile screens */
+@media (max-width: 768px) {
+  #proj-modal .proj-modal-content > div:first-child,
+  #proj-modal .proj-modal-img-wrap,
+  #proj-modal .proj-modal-img-wrap-legacy {
+    height: 220px !important;
+    min-height: 220px !important;
+    max-height: 220px !important;
+  }
+
+  #proj-modal img {
+    object-fit: contain !important; /* Prevents vertical cropping on mobile */
+  }
+}
 /* Engineering project cards */
 .eng-card .project-img {
-  height: 210px;
+  height: 300px;
 }
 .eng-card .project-img img {
   width: 100%;
@@ -1568,7 +1583,7 @@ timeline {
 /* Mobile: only slightly tighter than desktop, not a hard cut */
 @media (max-width: 640px) {
   .eng-card .project-img {
-    height: 90px;
+    height: 150px;
   }
   .eng-card .project-desc {
     -webkit-line-clamp: 15;     

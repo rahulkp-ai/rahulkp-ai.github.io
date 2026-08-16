@@ -29,215 +29,193 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ===== Projects Data ===== */
 // All projects — first 2 = Flagship, rest = Engineering
 const allProjects = [
+    {
+      title       : 'AI Vision Pipeline',
+      desc        : 'End-to-end computer vision pipeline using OpenCV and PyTorch for real-time object detection.',
+      long        : 'A production-grade computer vision system capable of real-time multi-class object detection. Built using PyTorch for the neural backbone and OpenCV for frame capture and pre/post-processing. Achieves sub-30ms inference on GPU-accelerated hardware. The pipeline includes data augmentation, anchor-free detection heads, and a REST API for integration. Integrated with a streaming dashboard for live monitoring and alert thresholds.',
+      highlights  : ['Sub-30ms GPU inference','Anchor-free detection heads','REST API integration','Real-time monitoring dashboard'],
+      tags        : ['Python','PyTorch','OpenCV'],
+      imgs        : ['images/projects/1.jpg','images/projects/3.jpg','images/projects/4.jpg'],
+      meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
+      github      : '#', demo: '#', flagship: true
+    },
+    {
+      title       : 'LLM-Powered Assistant',
+      desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
+      long        : 'A domain-specific conversational assistant leveraging fine-tuned large language models. The system uses retrieval-augmented generation (RAG) to ground responses in a curated knowledge base. Built on FastAPI with LangChain orchestration, it supports multi-turn memory, streaming responses, and structured output parsing. Features a vector store backed by Chroma for efficient semantic retrieval at scale.',
+      highlights  : ['RAG with vector search','Multi-turn conversation memory','Streaming responses','LangChain orchestration'],
+      tags        : ['LLM','FastAPI','LangChain'],
+      imgs        : ['images/projects/2.jpg','images/projects/5.jpg','images/projects/1.jpg'],
+      meta        : [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
+      github      : '#', demo: '#', flagship: true
+    },
+    // desc : 84 words
+    //  Ann-foundation'
+    {
+      title       : 'Ann-foundation',
+      desc        : 'Built an autograd engine and Multi-Layer Perceptron (MLP) from scratch in Python, implementing computational graphs, automatic differentiation, backpropagation, and gradient-based optimization without ML frameworks. Designed a dynamic computational graph to track mathematical operations and dependencies between values. Implemented reverse-mode automatic differentiation and recursive backpropagation for efficient gradient computation. Developed and trained an MLP using custom neural-network layers, activation functions, loss functions, and gradient-descent optimization.',
+      long        : 'This project implements the core foundations of neural-network training from the ground up, without relying on high-level deep-learning frameworks. The custom autograd engine builds a dynamic computational graph during forward operations and records the relationships between values required for gradient computation. Reverse-mode automatic differentiation traverses this graph backward from the loss, recursively applying the chain rule to calculate gradients for trainable parameters. On top of the autograd system, a Multi-Layer Perceptron (MLP) was implemented with custom layers, activation functions, loss functions, and gradient-descent optimization for model training. The project provides a practical understanding of how automatic differentiation, backpropagation, parameter updates, and neural-network learning work internally at a fundamental level.',
+      highlights  : [
+                      'Custom Autograd Engine',
+                      'Reverse-Mode Backprop',
+                      'Dynamic Graph Construction',
+                      'Zero-Framework Architecture',
+                      'Automated CI/CD Testing',
+                      'Interactive Web Visualizer'
+                    ],
+
+      tags        : ['Python','Neural Networks', 'Autograd', 'NumPy'],
+      imgs        : [
+                      'images/projects/Engineering/Ann-foundation-01.png',
+                      'images/projects/Engineering/Ann-foundation-02.png',
+                      'images/projects/Engineering/Ann-foundation-03.png',
+                      'images/projects/Engineering/Ann-foundation-04.png',
+                    ],
+
+      meta        : [
+                      {label:'Stack', val:'Gradio, Hugging Face Spaces, Pytest'},
+                      {label:'Status', val:'Active & Deployed'},
+                      {label:'Domain', val:'Deep-Learning'}
+                    ],
+      github      : 'https://github.com/rahulkp-ai/ann-foundation', 
+      demo        : 'https://huggingface.co/spaces/rahulkp-ai/ann-foundation', 
+      flagship    : false
+    },
+
+    // RankScript
+    {
+      title       : 'RankScript',
+      desc        : 'A full-stack competitive learning platform combining course management with gamified leaderboards. Built with FastAPI, Next.js, PostgreSQL, and Redis, it features end-to-end role-based access control across student, mentor, and admin workflows. A real-time engine aggregates quiz performance, assignment grades, lesson completion, and activity streaks into weighted rank scores across district, state, and national tiers. Mentors handle course lifecycles via a draft-to-approval workflow, while admins manage platform moderation with audit logs. Fully containerized with Docker and deployed across Vercel, Render, Neon, and Upstash.',
+      long        : 'This full-stack Learning Management System drives engagement through gamified competition rather than passive learning. Built on a strict layered backend—separating HTTP routes, business logic, and SQLAlchemy models—it spans ten domains including auth, courses, enrollments, and analytics. Its core differentiator is a weighted ranking engine aggregating quiz scores (40%), assignment grades (30%), completion rates (15%), and activity streaks (15%) into unified scores served via materialized views for fast regional leaderboard pagination. End-to-end role-based security separates student, mentor, and admin workflows, backed by JWT refresh-token rotation and bcrypt hashing. Fully containerized with Docker Compose and verified by a 266-test pytest suite, it deploys seamlessly across Vercel, Render, Neon PostgreSQL, and Upstash Redis.',
+      highlights  : [ 
+                      "Weighted Rank-Scoring Engine",
+                      "Role-Based Access Control",
+                      "Regional Leaderboards (District/State/National)",
+                      "JWT Auth with Refresh Rotation",
+                      "Admin Approval Workflows",
+                      "266-Test Backend Suite"
+                    ],
+
+      tags        : ["FastAPI", "Next.js", "PostgreSQL", "Redis", "Docker"],
+
+      imgs        : [
+                      'images/projects/Engineering/RankScript-01.png',
+                      'images/projects/Engineering/RankScript-02.png',
+                      'images/projects/Engineering/RankScript-03.png',
+                      'images/projects/Engineering/RankScript-04.png',
+                      'images/projects/Engineering/RankScript-05.png',
+                    ],
+
+      meta        : [
+                      { label: "Stack", val: "FastAPI, Next.js, PostgreSQL, Redis, Docker" },
+                      { label: "Status", val: "Active & Deployed" },
+                      { label: "Domain", val: "Full-Stack / EdTech" },
+                    ],
+
+      credentials : [
+                      { role: "Student", email: "student.lisa@test.com", password: "password" },
+                      { role: "Mentor",  email: "mentor.rajesh@test.com", password: "password" },
+                      { role: "Admin",   email: "admin@rankscript.com",   password: "password" }
+                    ],
+      demoNote    : "Backend runs on Render's free tier and sleeps after 15 minutes of inactivity — the first login may take 10–30 seconds while it wakes up.",
+
+      github      : 'https://github.com/rahulkp-ai/rankscript',
+      demo        : 'https://rankscript.vercel.app/auth/login',
+      flagship    : false
+    },
+
+    // PhishGuard
+    {
+      title       : 'PhishGuard',
+      desc        : 'This production-grade MLOps engineering project detects malicious phishing URLs in real time by deploying a robust Random Forest classifier trained on 28 carefully hand-engineered URL features. Built using Flask, scikit-learn, and Prometheus instrumentation, the application seamlessly supports real-time REST API scoring, scalable batch prediction workflows, automated data drift monitoring, and fully containerized deployments. Designed for high reliability, it incorporates the complete enterprise production stack: structured JSON logging, automated CI/CD deployment pipelines, production Kubernetes manifests, and a comprehensive Grafana dashboard for real-time end-to-end system observability.',
+      long        : 'PhishGuard goes beyond a typical ML project by implementing the full engineering stack a real ML product requires. The feature extractor derives 28 URL signals — entropy, brand impersonation, TLD analysis, subdomain depth — entirely from the URL string with no DNS lookups, achieving sub-10ms inference. A Random Forest classifier trained on ~50,000 balanced URLs from OpenPhish, URLhaus, PhishTank, Majestic Million, and Tranco achieves ~95% accuracy and ~0.98 ROC-AUC. The Flask API (gunicorn, app factory pattern) exposes /api/predict, /api/batch (50 URLs), /api/health, and /metrics endpoints with full input validation, per-request X-Request-ID middleware, and structured JSON logging via structlog. A rolling-window drift detector monitors the live phishing rate against a configurable baseline and emits structured alerts on deviation. The codebase is verified by 222 tests at 98.7% coverage across unit, integration, and regression categories, with a pytest matrix on Python 3.10 and 3.12. A multi-stage Docker build (non-root uid=1001, read-only rootfs) feeds a GitHub Actions CI pipeline that gates on lint, coverage, and image structure before pushing to GHCR. Kubernetes manifests cover HPA, init containers, and kustomize overlays for dev/staging/production environments.',
+
+      highlights  : [
+                    '28 Hand-Engineered URL Features',
+                    '~95% Accuracy · ~0.98 ROC-AUC',
+                    '222 Tests · 98.7% Coverage',
+                    'Prometheus Metrics + Drift Detection',
+                    'Kubernetes with HPA + Kustomize Overlays',
+                    'GitHub Actions CI/CD + GHCR Image Push'
+                  ],
+
+      tags        : ['Python', 'Flask', 'scikit-learn', 'Docker', 'Kubernetes'],
+
+      imgs        : [
+                    'images/projects/Engineering/PhishGuard-01.png',
+                    'images/projects/Engineering/PhishGuard-02.png',
+                    'images/projects/Engineering/PhishGuard-03.png',
+                    'images/projects/Engineering/PhishGuard-04.png',
+                    'images/projects/Engineering/PhishGuard-05.png',
+                    'images/projects/Engineering/PhishGuard-06.png',
+                  ],
+
+      meta        : [
+                    { label: 'Stack',  val: 'Flask, scikit-learn, Docker, Kubernetes, Prometheus' },
+                    { label: 'Status', val: 'Live & Deployed' },
+                    { label: 'Domain', val: 'MLOps / Cybersecurity' },
+                  ],
+
+      credentials : [
+                  { role: "URLs",        email: "",                                                        password: "" },
+                  { role: "High Risk",            email: "http://paypal-verify-account.tk/login/confirm",           password: "" },
+                  { role: "High Risk",            email: "http://192.168.1.1/admin/login",                          password: "" },
+                  { role: "High Risk",            email: "http://secure-banking-update.xyz/account/verify",         password: "" },
+                  { role: "Safe",                 email: "https://github.com/rahulkp-ai/phishguard",                password: "" },
+                  { role: "Safe",                 email: "https://www.google.com/search?q=phishing+detection",      password: "" },
+                  { role: "Safe",                 email: "https://stackoverflow.com/questions/tagged/flask",         password: "" },
+                ],
+
+      demoNote    : "Deployed on Render's free tier — the first request may take 10–30 seconds to wake up. Submit any URL to the predict endpoint and get a real-time phishing classification with confidence score and risk level.",
+
+      github      : 'https://github.com/rahulkp-ai/phishguard',
+      demo        : 'https://phishguard-xozj.onrender.com',
+      flagship    : false
+    },
+    
+    // TaskFlow
   {
-    title       : 'AI Vision Pipeline',
-    desc        : 'End-to-end computer vision pipeline using OpenCV and PyTorch for real-time object detection.',
-    long        : 'A production-grade computer vision system capable of real-time multi-class object detection. Built using PyTorch for the neural backbone and OpenCV for frame capture and pre/post-processing. Achieves sub-30ms inference on GPU-accelerated hardware. The pipeline includes data augmentation, anchor-free detection heads, and a REST API for integration. Integrated with a streaming dashboard for live monitoring and alert thresholds.',
-    highlights  : ['Sub-30ms GPU inference','Anchor-free detection heads','REST API integration','Real-time monitoring dashboard'],
-    tags        : ['Python','PyTorch','OpenCV'],
-    imgs        : ['images/projects/1.jpg','images/projects/3.jpg','images/projects/4.jpg'],
-    meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
-    github      : '#', demo: '#', flagship: true
-  },
-  {
-    title       : 'LLM-Powered Assistant',
-    desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
-    long        : 'A domain-specific conversational assistant leveraging fine-tuned large language models. The system uses retrieval-augmented generation (RAG) to ground responses in a curated knowledge base. Built on FastAPI with LangChain orchestration, it supports multi-turn memory, streaming responses, and structured output parsing. Features a vector store backed by Chroma for efficient semantic retrieval at scale.',
-    highlights  : ['RAG with vector search','Multi-turn conversation memory','Streaming responses','LangChain orchestration'],
-    tags        : ['LLM','FastAPI','LangChain'],
-    imgs        : ['images/projects/2.jpg','images/projects/5.jpg','images/projects/1.jpg'],
-    meta        : [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
-    github      : '#', demo: '#', flagship: true
-  },
-  // desc : 84 words
-  {
-    title       : 'Ann-foundation',
-    desc        : 'Built an autograd engine and Multi-Layer Perceptron (MLP) from scratch in Python, implementing computational graphs, automatic differentiation, backpropagation, and gradient-based optimization without ML frameworks. Designed a dynamic computational graph to track mathematical operations and dependencies between values. Implemented reverse-mode automatic differentiation and recursive backpropagation for efficient gradient computation. Developed and trained an MLP using custom neural-network layers, activation functions, loss functions, and gradient-descent optimization.',
-    long        : 'This project implements the core foundations of neural-network training from the ground up, without relying on high-level deep-learning frameworks. The custom autograd engine builds a dynamic computational graph during forward operations and records the relationships between values required for gradient computation. Reverse-mode automatic differentiation traverses this graph backward from the loss, recursively applying the chain rule to calculate gradients for trainable parameters. On top of the autograd system, a Multi-Layer Perceptron (MLP) was implemented with custom layers, activation functions, loss functions, and gradient-descent optimization for model training. The project provides a practical understanding of how automatic differentiation, backpropagation, parameter updates, and neural-network learning work internally at a fundamental level.',
+    title       : 'TaskFlow',
+    desc        : 'Engineered to elevate team productivity, this enterprise-grade full-stack Kanban platform delivers seamless project management using the MERN stack (MongoDB, Express, React, Node.js). The application enforces secure, fine-grained role-based access control (RBAC) across administrative and member workflows, while driving efficiency through granular subtask tracking and dynamic analytics. Built for bulletproof reliability, it highlights continuous integration with a 99%+ test-covered API suite, isolated Docker containerization for production parity, and multi-cloud deployment across Vercel, Render, and MongoDB Atlas to showcase modern DevOps expertise.',
+    long        : 'This full-stack task management app lets teams plan, track, and collaborate through both a Kanban board and list view, with tasks moving through todo, in-progress, and completed stages. Built on Express and MongoDB with a clean MVC structure, it separates controllers, middleware, and Mongoose models across dedicated user and task domains. Role-based middleware (protectRoute, isAdminRoute) gates admin-only actions — task creation, team management, account activation — behind JWT auth stored in HttpOnly cookies with bcrypt password hashing. The dashboard aggregates task counts by stage and priority into a live Recharts visualization, while a notification system and per-task activity feed keep teams in sync. Hardened with helmet, rate limiting, and an env-driven CORS allow-list, and verified by Jest + Supertest (server) and Vitest + React Testing Library (client) test suites, it deploys across Vercel, Render, and MongoDB Atlas — with API requests proxied through Vercel to keep the auth cookie same-origin and Safari-compatible.',
     highlights  : [
-                    'Custom Autograd Engine',
-                    'Reverse-Mode Backprop',
-                    'Dynamic Graph Construction',
-                    'Zero-Framework Architecture',
-                    'Automated CI/CD Testing',
-                    'Interactive Web Visualizer'
-                  ],
-
-    tags        : ['Python','Neural Networks', 'Autograd', 'NumPy'],
-    imgs        : [
-                    'images/projects/Engineering/Ann-foundation-01.png',
-                    'images/projects/Engineering/Ann-foundation-02.png',
-                    'images/projects/Engineering/Ann-foundation-03.png',
-                    'images/projects/Engineering/Ann-foundation-04.png',
-                  ],
-
-    meta        : [
-                    {label:'Stack', val:'Gradio, Hugging Face Spaces, Pytest'},
-                    {label:'Status', val:'Active & Deployed'},
-                    {label:'Domain', val:'Deep-Learning'}
-                  ],
-    github      : 'https://github.com/rahulkp-ai/ann-foundation', demo: 'https://huggingface.co/spaces/rahulkp-ai/ann-foundation', flagship: false
-  },
-
-  {
-    title       : 'RankScript',
-    desc        : 'A full-stack competitive learning platform combining course management with gamified leaderboards. Built with FastAPI, Next.js, PostgreSQL, and Redis, it features end-to-end role-based access control across student, mentor, and admin workflows. A real-time engine aggregates quiz performance, assignment grades, lesson completion, and activity streaks into weighted rank scores across district, state, and national tiers. Mentors handle course lifecycles via a draft-to-approval workflow, while admins manage platform moderation with audit logs. Fully containerized with Docker and deployed across Vercel, Render, Neon, and Upstash.',
-    long        : 'This full-stack Learning Management System drives engagement through gamified competition rather than passive learning. Built on a strict layered backend—separating HTTP routes, business logic, and SQLAlchemy models—it spans ten domains including auth, courses, enrollments, and analytics. Its core differentiator is a weighted ranking engine aggregating quiz scores (40%), assignment grades (30%), completion rates (15%), and activity streaks (15%) into unified scores served via materialized views for fast regional leaderboard pagination. End-to-end role-based security separates student, mentor, and admin workflows, backed by JWT refresh-token rotation and bcrypt hashing. Fully containerized with Docker Compose and verified by a 266-test pytest suite, it deploys seamlessly across Vercel, Render, Neon PostgreSQL, and Upstash Redis.',
-    highlights  : [ 
-                    "Weighted Rank-Scoring Engine",
+                    "Kanban Board & List Views",
                     "Role-Based Access Control",
-                    "Regional Leaderboards (District/State/National)",
-                    "JWT Auth with Refresh Rotation",
-                    "Admin Approval Workflows",
-                    "266-Test Backend Suite"
+                    "Task Lifecycle with Subtasks & Activity Feed",
+                    "JWT Auth in HttpOnly Cookies",
+                    "Dashboard Analytics (Recharts)",
+                    "Dockerized with CI-Gated Test Suites"
                   ],
 
-    tags        : ["FastAPI", "Next.js", "PostgreSQL", "Redis", "Docker"],
+    tags        : ["React", "Express", "MongoDB", "Docker"],
 
     imgs        : [
-                    'images/projects/Engineering/RankScript-01.png',
-                    'images/projects/Engineering/RankScript-02.png',
-                    'images/projects/Engineering/RankScript-03.png',
-                    'images/projects/Engineering/RankScript-04.png',
-                    'images/projects/Engineering/RankScript-05.png',
+                    'images/projects/Engineering/TaskFlow-01.png',
+                    'images/projects/Engineering/TaskFlow-02.png',
+                    'images/projects/Engineering/TaskFlow-03.png',
+                    'images/projects/Engineering/TaskFlow-04.png',
+                    'images/projects/Engineering/TaskFlow-05.png',
+                    'images/projects/Engineering/TaskFlow-06.png',
                   ],
 
     meta        : [
-                    { label: "Stack", val: "FastAPI, Next.js, PostgreSQL, Redis, Docker" },
+                    { label: "Stack", val: "React, Express, MongoDB, Docker" },
                     { label: "Status", val: "Active & Deployed" },
-                    { label: "Domain", val: "Full-Stack / EdTech" },
+                    { label: "Domain", val: "Full-Stack / Productivity" },
                   ],
 
     credentials : [
-                    { role: "Student", email: "student.lisa@test.com", password: "password" },
-                    { role: "Mentor",  email: "mentor.rajesh@test.com", password: "password" },
-                    { role: "Admin",   email: "admin@rankscript.com",   password: "password" }
+                    { role: "Admin",              email: "admin@taskflow.com",  password: "Admin@123" },
+                    { role: "Frontend Engineer",  email: "sarah@taskflow.com",  password: "Sarah@123" },
+                    { role: "Backend Engineer",   email: "james@taskflow.com",  password: "James@123" }
                   ],
-    demoNote    : "Backend runs on Render's free tier and sleeps after 15 minutes of inactivity — the first login may take 10–30 seconds while it wakes up.",
+    demoNote    : "Backend runs on Render's free tier and sleeps after 15 minutes of inactivity — the first login may take 30–60 seconds while it wakes up.",
 
-    github      : 'https://github.com/rahulkp-ai/rankscript',
-    demo        : 'https://rankscript.vercel.app/auth/login',
+    github      : 'https://github.com/rahulkp-ai/taskflow',
+    demo        : 'https://taskflow-iota-ecru.vercel.app/log-in',
     flagship    : false
   },
 
-  {
-    title       : 'PhishGuard',
-    desc        : 'This production-grade MLOps engineering project detects malicious phishing URLs in real time by deploying a robust Random Forest classifier trained on 28 carefully hand-engineered URL features. Built using Flask, scikit-learn, and Prometheus instrumentation, the application seamlessly supports real-time REST API scoring, scalable batch prediction workflows, automated data drift monitoring, and fully containerized deployments. Designed for high reliability, it incorporates the complete enterprise production stack: structured JSON logging, automated CI/CD deployment pipelines, production Kubernetes manifests, and a comprehensive Grafana dashboard for real-time end-to-end system observability.',
-    long        : 'PhishGuard goes beyond a typical ML project by implementing the full engineering stack a real ML product requires. The feature extractor derives 28 URL signals — entropy, brand impersonation, TLD analysis, subdomain depth — entirely from the URL string with no DNS lookups, achieving sub-10ms inference. A Random Forest classifier trained on ~50,000 balanced URLs from OpenPhish, URLhaus, PhishTank, Majestic Million, and Tranco achieves ~95% accuracy and ~0.98 ROC-AUC. The Flask API (gunicorn, app factory pattern) exposes /api/predict, /api/batch (50 URLs), /api/health, and /metrics endpoints with full input validation, per-request X-Request-ID middleware, and structured JSON logging via structlog. A rolling-window drift detector monitors the live phishing rate against a configurable baseline and emits structured alerts on deviation. The codebase is verified by 222 tests at 98.7% coverage across unit, integration, and regression categories, with a pytest matrix on Python 3.10 and 3.12. A multi-stage Docker build (non-root uid=1001, read-only rootfs) feeds a GitHub Actions CI pipeline that gates on lint, coverage, and image structure before pushing to GHCR. Kubernetes manifests cover HPA, init containers, and kustomize overlays for dev/staging/production environments.',
-
-    highlights  : [
-                  '28 Hand-Engineered URL Features',
-                  '~95% Accuracy · ~0.98 ROC-AUC',
-                  '222 Tests · 98.7% Coverage',
-                  'Prometheus Metrics + Drift Detection',
-                  'Kubernetes with HPA + Kustomize Overlays',
-                  'GitHub Actions CI/CD + GHCR Image Push'
-                ],
-
-    tags        : ['Python', 'Flask', 'scikit-learn', 'Docker', 'Kubernetes'],
-
-    imgs        : [
-                  'images/projects/Engineering/PhishGuard-01.png',
-                  'images/projects/Engineering/PhishGuard-02.png',
-                  'images/projects/Engineering/PhishGuard-03.png',
-                  'images/projects/Engineering/PhishGuard-04.png',
-                  'images/projects/Engineering/PhishGuard-05.png',
-                  'images/projects/Engineering/PhishGuard-06.png',
-                ],
-
-    meta        : [
-                  { label: 'Stack',  val: 'Flask, scikit-learn, Docker, Kubernetes, Prometheus' },
-                  { label: 'Status', val: 'Live & Deployed' },
-                  { label: 'Domain', val: 'MLOps / Cybersecurity' },
-                ],
-
-    credentials : [
-                { role: "Phishing URLs",        email: "",                                                        password: "" },
-                { role: "High Risk",            email: "http://paypal-verify-account.tk/login/confirm",           password: "" },
-                { role: "High Risk",            email: "http://192.168.1.1/admin/login",                          password: "" },
-                { role: "High Risk",            email: "http://secure-banking-update.xyz/account/verify",         password: "" },
-                { role: "Legitimate URLs",      email: "",                                                        password: "" },
-                { role: "Safe",                 email: "https://github.com/rahulkp-ai/phishguard",                password: "" },
-                { role: "Safe",                 email: "https://www.google.com/search?q=phishing+detection",      password: "" },
-                { role: "Safe",                 email: "https://stackoverflow.com/questions/tagged/flask",         password: "" },
-              ],
-
-    demoNote    : "Deployed on Render's free tier — the first request may take 10–30 seconds to wake up. Submit any URL to the predict endpoint and get a real-time phishing classification with confidence score and risk level.",
-
-    github      : 'https://github.com/rahulkp-ai/phishguard',
-    demo        : 'https://phishguard-xozj.onrender.com',
-    flagship    : false
-  },
-  {
-    title: 'MLOps Deployment Platform',
-    desc: 'Scalable MLOps platform with Docker, Kubernetes and CI/CD pipelines, built for reliable, secure, automated production deployments. It integrates automated rollback strategies triggered by anomaly detection, ensuring zero-downtime releases across multi-region clusters. Model versioning and lineage tracking are handled through a centralised registry, giving full auditability of every deployed artefact. Role-based access control and secrets management keep the pipeline compliant with enterprise security standards.',
-    long: 'A fully containerised MLOps infrastructure for training, versioning, deploying, and monitoring ML models at scale. Features automated CI/CD pipelines with GitHub Actions, model registry backed by MLflow, Kubernetes-managed inference pods, and Prometheus/Grafana dashboards for real-time drift detection.',
-    highlights: ['MLflow model registry','K8s inference pods','CI/CD automation','Drift detection dashboards'],
-    tags: ['Docker','K8s','MLflow'],
-    imgs: ['images/projects/3.jpg','images/projects/4.jpg'],
-    meta: [{label:'Stack', val:'Docker, Kubernetes, MLflow, GitHub Actions'},{label:'Status', val:'Production'},{label:'Domain', val:'MLOps / Infrastructure'}],
-    github: '#', demo: '#', flagship: false
-  },
-  // {
-  //   title: 'Time-Series Forecasting',
-  //   desc: 'LSTM-based forecasting system for financial market prediction, featuring attention mechanisms and rigorous statistical backtesting. The system ingests live tick data and re-trains incrementally to adapt to shifting market regimes without full retraining cycles. Confidence intervals are calibrated using conformal prediction, giving traders quantifiable uncertainty bounds around every forecast. A risk-adjusted backtesting harness benchmarks strategy performance against multiple baseline models across varied market conditions.',
-  //   long: 'A deep learning forecasting system using stacked LSTM networks trained on OHLCV financial data. Incorporates attention mechanisms for long-range dependency capture. Features walk-forward validation, Bayesian hyperparameter tuning via Optuna, and an interactive Plotly dashboard for forecast visualisation.',
-  //   highlights: ['Attention-augmented LSTM','Walk-forward validation','Optuna hyperparameter tuning','Plotly dashboard'],
-  //   tags: ['LSTM','TensorFlow','Pandas'],
-  //   imgs: ['images/projects/4.jpg','images/projects/5.jpg'],
-  //   meta: [{label:'Stack', val:'TensorFlow, Pandas, Optuna, Plotly'},{label:'Status', val:'Research'},{label:'Domain', val:'Finance / Time-Series'}],
-  //   github: '#', demo: '#', flagship: false
-  // },
-  // {
-  //   title: 'NLP Sentiment Engine',
-  //   desc: 'Transformer-based sentiment analysis API serving 1M+ requests/day with low-latency, fault-tolerant, horizontally autoscaled cloud infrastructure. Requests are load-balanced across multiple availability zones to guarantee resilience during sudden traffic spikes. A circuit-breaker pattern isolates failing downstream dependencies to prevent cascading outages across the service mesh. Continuous model evaluation against a labelled feedback loop keeps sentiment accuracy stable as language patterns evolve over time.',
-  //   long: 'High-throughput sentiment analysis service built on a fine-tuned BERT model. Supports multi-label classification across 5 sentiment classes. Deployed as a microservice with async inference batching, Redis caching, and a horizontal autoscaler. Maintains 99.9% uptime while serving over 1M requests per day.',
-  //   highlights: ['Fine-tuned BERT','Redis response caching','Async inference batching','99.9% uptime SLA'],
-  //   tags: ['NLP','BERT','FastAPI'],
-  //   imgs: ['images/projects/5.jpg','images/projects/2.jpg'],
-  //   meta: [{label:'Stack', val:'PyTorch, HuggingFace, FastAPI, Redis'},{label:'Status', val:'Production'},{label:'Domain', val:'NLP / Backend'}],
-  //   github: '#', demo: '#', flagship: false
-  // },
-  // {
-  //   title: 'Graph Neural Network Classifier',
-  //   desc: 'Node classification and link prediction on citation and social networks using GCN/GAT architectures, with detailed embedding visualisation and ablation studies. The framework supports both transductive and inductive learning settings, enabling generalisation to previously unseen nodes. Hyperparameter search across layer depth, attention heads, and dropout rates is automated via grid search with early stopping. Results are benchmarked against classical baselines including node2vec and DeepWalk for added context.',
-  //   long: 'A research-driven project implementing Graph Convolutional Networks (GCN) and Graph Attention Networks (GAT) for node classification on benchmark citation datasets (Cora, CiteSeer). The pipeline includes graph preprocessing, adjacency normalisation, mini-batch neighbourhood sampling for large graphs, and a comparison study between spectral and spatial GNN approaches. Visualised learned embeddings using t-SNE and UMAP.',
-  //   highlights: ['GCN + GAT architectures','Mini-batch neighbourhood sampling','t-SNE/UMAP embedding visualisation','Benchmark on Cora & CiteSeer'],
-  //   tags: ['PyTorch','DGL','NetworkX'],
-  //   imgs: ['images/projects/3.jpg','images/projects/1.jpg'],
-  //   meta: [{label:'Stack', val:'PyTorch, DGL, NetworkX, scikit-learn'},{label:'Status', val:'Research'},{label:'Domain', val:'Graph ML'}],
-  //   github: '#', demo: '#', flagship: false
-  // },
-  // {
-  //   title: 'Semantic Search Engine',
-  //   desc: 'Dense retrieval system with bi-encoder embeddings and FAISS vector indexing for document search, delivering consistent sub-50ms query latency at scale. Query understanding includes synonym expansion and spelling correction to improve recall on noisy user input. The indexing layer supports incremental updates so new documents become searchable within minutes of ingestion. A feedback-driven relevance tuning loop continuously adjusts ranking weights based on click-through signals.',
-  //   long: 'A semantic search service built on bi-encoder sentence embeddings and FAISS for approximate nearest-neighbour retrieval over a 1M-document corpus. Supports hybrid BM25 + dense retrieval with RRF re-ranking. Exposes a REST search API with sub-50ms p99 latency. Indexing pipeline processes documents in parallel using multiprocessing and periodic index updates via a cron-scheduled job.',
-  //   highlights: ['Bi-encoder + FAISS ANN','Hybrid BM25 + dense retrieval','Sub-50ms p99 latency','1M-doc parallel indexing'],
-  //   tags: ['FAISS','HuggingFace','FastAPI'],
-  //   imgs: ['images/projects/2.jpg','images/projects/5.jpg'],
-  //   meta: [{label:'Stack', val:'FAISS, Sentence-Transformers, FastAPI, BM25'},{label:'Status', val:'Production'},{label:'Domain', val:'NLP / Search'}],
-  //   github: '#', demo: '#', flagship: false
-  // },
-  // {
-  //   title: 'AutoML Experiment Tracker',
-  //   desc: 'Lightweight MLflow-based experiment tracking dashboard with automated hyperparameter sweeps and streamlined one-click model promotion workflows end-to-end. Each experiment run is automatically tagged with dataset version and code commit hash for full reproducibility. The dashboard surfaces leaderboard views comparing model families side-by-side across custom metrics. Slack notifications alert the team the moment a new best-performing model clears the promotion threshold.',
-  //   long: 'A self-hosted AutoML experimentation platform wrapping MLflow, Optuna, and a custom Streamlit dashboard. Runs parallelised hyperparameter sweeps across model families (XGBoost, LightGBM, neural nets) using Optuna\'s TPE sampler. Tracks metrics, artefacts, and environment metadata per trial. Supports one-click model promotion to a staging registry and diff-based run comparison for ablation studies.',
-  //   highlights: ['Optuna TPE hyperparameter sweeps','Parallel trial execution','One-click model promotion','Ablation run comparison'],
-  //   tags: ['MLflow','Optuna','Streamlit'],
-  //   imgs: ['images/projects/4.jpg','images/projects/3.jpg'],
-  //   meta: [{label:'Stack', val:'MLflow, Optuna, Streamlit, XGBoost, LightGBM'},{label:'Status', val:'Internal Tool'},{label:'Domain', val:'MLOps / AutoML'}],
-  //   github: '#', demo: '#', flagship: false
-  // },
-  // {
-  //   title: 'Multimodal RAG System',
-  //   desc: 'Retrieval-augmented generation pipeline handling text, tables, and images from PDF documents, with grounded, citation-aware multi-turn source attribution support. Table structures are parsed and linearised into a query-friendly format so numeric data remains fully queryable alongside prose. An answer-verification step cross-checks generated claims against retrieved source spans to reduce hallucination. Every retrieval decision is logged for downstream auditing, evaluation, and continuous quality improvement.',
-  //   long: 'A multimodal RAG system that ingests PDF documents and extracts text, tables, and embedded images into a unified vector store. Uses ColPali-style late interaction for image patch retrieval alongside text embeddings. LLM responses are grounded via hybrid retrieval and a context-compression step that prunes irrelevant passages before generation. Supports streamed multi-turn conversations with source attribution.',
-  //   highlights: ['Multimodal PDF ingestion','ColPali image patch retrieval','Context compression before generation','Source-attributed streaming responses'],
-  //   tags: ['LangChain','Chroma','Unstructured'],
-  //   imgs: ['images/projects/1.jpg','images/projects/2.jpg'],
-  //   meta: [{label:'Stack', val:'LangChain, Chroma, Unstructured, GPT-4o'},{label:'Status', val:'Prototype'},{label:'Domain', val:'GenAI / RAG'}],
-  //   github: '#', demo: '#', flagship: false
-  // },
 ];
 
 const flagshipProjects = allProjects.filter(p => p.flagship);
@@ -1030,8 +1008,11 @@ const techCategories = [
 /* ===== Certification helpers ===== */
 const cUrl  = id => `https://www.coursera.org/account/accomplishments/verify/${id}`;
 const cProf = id => `https://www.coursera.org/account/accomplishments/professional-cert/${id}`;
+const cSpec = id => `https://www.coursera.org/account/accomplishments/specialization/${id}`;
 const C  = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cUrl(id)});
 const CP = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cProf(id)});
+const CS = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cSpec(id)});
+
 
 /* ===== CERTIFICATION CATEGORIES (10) ===== */
 const certCategories = [
@@ -1065,7 +1046,7 @@ const certCategories = [
       C('UC Davis','SQL for Data Science','FD4Q2PG62LDM','bi-database'),
   ]},
   { n:4, title:'MLOps & AI Infrastructure', icon:'bi-gear-wide-connected', certs:[
-      C('Duke University','MLOps | Machine Learning Operations Specialization','MLOpsDuke.jpeg','bi-gear-wide-connected'),
+      CS('Duke University','MLOps | Machine Learning Operations Specialization','0MS5AHGLJJGH','bi-gear-wide-connected'),
       C('Duke University','MLOps Specialization — Course 1','UCY8YLI6L9MZ','bi-gear-wide-connected'),
       C('Duke University','MLOps Specialization — Course 2','59RGIBQ7SCU7','bi-gear-wide-connected'),
       C('Duke University','MLOps Specialization — Course 3','AQNWLT32VQKQ','bi-gear-wide-connected'),
@@ -1098,7 +1079,6 @@ const certCategories = [
       C('LearnKartS','Problem Solving and Critical Thinking','TO1XYHKVBDML','bi-lightbulb'),
   ]}
 ];
-
 /* Level badge color */
 const levelColor = { Expert: '#22c55e', Advanced: '#3b82f6', Intermediate: '#f59e0b' };
 

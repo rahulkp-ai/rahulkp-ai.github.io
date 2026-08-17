@@ -686,50 +686,96 @@ document.getElementById('exp-scroller').innerHTML = experiences.map((e, i) => `
 
 /* ===== Research Section ===== */
 const papers = [
-  {
-    status: 'Published',
-    type: 'Article',
-    title: 'Design of a Neural Collaborative Filtering–Based Movie Recommendation System: From-Scratch Implementation, PyTorch Benchmarking, and Production Architecture',
-    subject: 'Computer Science & Mathematics — Artificial Intelligence and Machine Learning',
-    abstract: 'A complete neural collaborative filtering system for movie recommendations, built two ways: a from-scratch NumPy implementation with hand-derived backpropagation, and an optimized PyTorch version accelerated on Apple Silicon (MPS). Benchmarked on MovieLens, then deployed as a production microservices stack with a FastAPI gateway, a dedicated inference server, PostgreSQL, and a Netflix-style frontend with a hybrid cold-start module.',
-    stats: [
-      { val: '3.39×', label: 'Faster training (PyTorch vs. NumPy)' },
-      { val: '0.615', label: 'Peak HR@10 recommendation quality' },
-      { val: '0.2257', label: 'Final BCE loss (Scratch NCF)' }
-    ],
-    keywords: ['Neural Collaborative Filtering','Recommender Systems','Matrix Factorization','Implicit Feedback','Deep Learning','Microservices Architecture','MovieLens'],
-    platform: 'Preprints.org',
-    preprintId: '212150',
-    doi: 'https://doi.org/10.20944/preprints202605.0449.v1',
-    doiShort: 'doi.org/10.20944/preprints202605.0449.v1',
-    author: { initials: 'RK', name: 'Rahul K P', qual: 'MSc Computer Science, Final Year', org: 'University of Calicut', email: 'rahul.kp.msc.cs@gmail.com' },
-    supervisor: { initials: 'SK', name: 'Dr. Seema S.', qual: 'MCA · MBA · MPhil · PhD', org: 'University of Calicut', email: 'seema.karuvarath@gmail.com' },
-    methodology: 'The study implements Neural Collaborative Filtering from the ground up using NumPy with analytically derived gradients, then replicates the same architecture in PyTorch leveraging Apple Silicon MPS acceleration. Both implementations are rigorously benchmarked on the MovieLens dataset to ensure statistical validity. A hybrid cold-start module using item-content features supplements the collaborative signal for new users, and the system is deployed as a three-tier microservices stack with a dedicated inference API, PostgreSQL user store, and a Netflix-style frontend.',
-    reproducibility: 'Full implementation, training logs, and benchmark scripts are included in the supplementary materials. The from-scratch NumPy baseline requires no GPU; the PyTorch variant targets MPS/CUDA.',
-    contributions: ['From-scratch NCF','MPS Acceleration','RAG Cold-Start','Microservices Deploy','Benchmarking Suite'],
-  },
-  {
-    status: 'Preprint',
-    type: 'Article',
-    title: 'Benchmarking Retrieval-Augmented Generation Pipelines: Chunking Strategies, Embedding Models, and Reranker Impact on Answer Faithfulness',
-    subject: 'Computer Science & Mathematics — Natural Language Processing & Information Retrieval',
-    abstract: 'A systematic empirical study of RAG pipeline design choices across three axes: document chunking strategy (fixed-size, sentence-aware, semantic), embedding model family (dense bi-encoder vs. sparse BM25 vs. hybrid), and reranker placement (cross-encoder vs. no reranking). Evaluated on a curated QA benchmark spanning technical documentation, scientific abstracts, and long-form prose. Faithfulness, answer relevancy, and context precision are measured using the RAGAS framework. Results show semantic chunking with cross-encoder reranking yields the highest faithfulness at the cost of 2.4× latency compared to fixed-size + BM25 baselines.',
-    stats: [
-      { val: '94.2%', label: 'Peak faithfulness (RAGAS)' },
-      { val: '2.4×', label: 'Latency overhead of best pipeline' },
-      { val: '12', label: 'Pipeline configurations benchmarked' }
-    ],
-    keywords: ['Retrieval-Augmented Generation','RAG','Chunking Strategy','Bi-Encoder','BM25','Cross-Encoder Reranking','RAGAS','LLM Evaluation'],
-    platform: 'Preprints.org',
-    preprintId: 'TBD',
-    doi: '#',
-    doiShort: 'Submission in progress',
-    author: { initials: 'RK', name: 'Rahul K P', qual: 'MSc Computer Science, Final Year', org: 'University of Calicut', email: 'rahul.kp.msc.cs@gmail.com' },
-    supervisor: { initials: 'SK', name: 'Dr. Seema S.', qual: 'MCA · MBA · MPhil · PhD', org: 'University of Calicut', email: 'seema.karuvarath@gmail.com' },
-    methodology: 'Twelve distinct RAG pipeline configurations are constructed by varying chunking strategy (fixed-size 256/512 tokens, sentence-aware, recursive semantic), embedding model (BGE-M3, E5-large, BM25), and reranking stage (none, cross-encoder BGE-reranker-v2). Each pipeline is evaluated on 300 QA pairs across three domain categories using the RAGAS evaluation suite measuring faithfulness, answer relevancy, context recall, and context precision. Latency profiling is performed under single-request and batch-10 conditions.',
-    reproducibility: 'All 12 pipeline configurations, evaluation scripts, and benchmark datasets are released. Experiments can be reproduced on CPU (slower) or with any CUDA-capable GPU. No proprietary data or model weights are required beyond publicly available HuggingFace checkpoints.',
-    contributions: ['12-config RAG benchmark','Semantic chunking analysis','Cross-encoder reranking study','RAGAS evaluation suite','Latency-faithfulness tradeoff'],
-  }
+{
+  status  : 'Preprint',
+  type    : 'Preprint Article',
+  title   : 'Design of a Neural Collaborative Filtering–Based Movie Recommendation System: From-Scratch Implementation, PyTorch Benchmarking and Production Architecture',
+  subject : 'Computer Science and Mathematics — Artificial Intelligence and Machine Learning',
+  abstract: 'The proliferation of digital content platforms has rendered personalized recommendation systems a foundational component of modern information retrieval. Classical Matrix Factorization (MF) methods, while computationally tractable, are fundamentally constrained by the linearity of the inner product operator, which prevents them from capturing the non-linear, higher-order dependencies characteristic of real-world user–item interaction spaces. This paper presents a complete end-to-end system embodying Neural Collaborative Filtering (NCF), wherein a Generalized Matrix Factorization (GMF) module and a Multi-Layer Perceptron (MLP) are fused to model both linear and non-linear latent factors simultaneously. Two fully isomorphic implementations are developed: a pedagogical NumPy-based version featuring hand-derived backpropagation, and an optimized PyTorch version leveraging Apple Silicon MPS acceleration. Empirical evaluation on the MovieLens dataset demonstrates that both implementations converge to equivalent final Binary Cross-Entropy losses (0.2257 and 0.2307, respectively), while the PyTorch variant achieves a 3.39× speedup in total training time (3,295 s versus 972 s over 20 epochs). Peak recommendation quality, measured by Hit Ratio at cutoff 10 (HR@10), reaches 0.615 for the PyTorch implementation. The system is deployed as a production-grade microservices architecture comprising a FastAPI gateway, a dedicated PyTorch inference server, a PostgreSQL persistence layer, and a Netflix-style frontend with TMDB poster integration. A hybrid cold-start module supplements the NCF core for new users and items. The findings validate the feasibility of bridging rigorous algorithmic pedagogy with industry-standard deployment practices.',
+  stats   : [
+              { 
+                val: '3.39×', 
+                label: 'Speedup in total training time (PyTorch vs. NumPy)' 
+              },
+              { 
+                val: '0.615', 
+                label: 'Peak HR@10 recommendation quality (PyTorch NCF)' 
+              },
+              { 
+                val: '0.2257', 
+                label: 'Final BCE loss (Scratch NCF)' 
+              }
+            ],
+
+  keywords: [
+              'neural collaborative filtering',
+              'recommender systems',
+              'matrix factorization',
+              'implicit feedback',
+              'deep learning',
+              'microservices architecture',
+              'scalable deployment',
+              'MovieLens',
+            ],
+
+  platform        : 'Preprints.org',
+  preprintId      : '202605.0449.v1',
+  doi             : 'https://doi.org/10.20944/preprints202605.0449.v1',
+  doiShort        : 'doi.org/10.20944/preprints202605.0449.v1',
+  author          : { 
+                      initials  : 'RK', 
+                      name      : 'RAHUL K. P.', 
+                      qual      : 'MSc Computer Science', 
+                      org       : 'University of Calicut', 
+                      email     : 'rahul.kp.msc.cs@gmail.com' 
+                    },
+                    
+  supervisor      : { 
+                      initials  : 'SS', 
+                      name      : 'Dr.Seema S.', 
+                      qual      : 'MCA · MBA · MPhil · PhD', 
+                      org       : 'University of Calicut', 
+                      email     : 'seema.karuvarath@gmail.com' 
+                    },
+
+  methodology     : 'The study formulates Neural Collaborative Filtering combining GMF and MLP pathways, built from scratch in NumPy with hand-derived analytical backpropagation and in PyTorch using Apple Silicon MPS acceleration. Both models are benchmarked on MovieLens 1M using leave-one-out cross-validation (HR@10, NDCG@10). Cold start is handled via a dynamic hybrid module combining interaction volume weighting, item popularity, and genre vector similarity. The architecture is deployed via Docker Compose across four microservices: a FastAPI gateway, dedicated PyTorch inference server, PostgreSQL persistence layer, and Redis cache.',
+  reproducibility : 'Full implementation, training logs, and benchmark scripts are included. The from-scratch NumPy baseline executes on CPU BLAS routines; the PyTorch variant targets MPS/CUDA acceleration.',
+  contributions   : [
+                      'From-scratch NCF', 
+                      'MPS Acceleration', 
+                      'Hybrid Cold-Start Engine', 
+                      'Microservices Architecture',
+                      'Benchmarking Suite',
+                      'Manual Gradient Derivation',
+                      'Implicit Feedback Learning',
+                      'Isolated Inference Serving',
+                      'Apple MPS Speedup Validation',
+                      'Leave-One-Out Benchmark Protocol'
+                    ]
+
+}
+  // {
+  //   status: 'Preprint',
+  //   type: 'Article',
+  //   title: 'Benchmarking Retrieval-Augmented Generation Pipelines: Chunking Strategies, Embedding Models, and Reranker Impact on Answer Faithfulness',
+  //   subject: 'Computer Science & Mathematics — Natural Language Processing & Information Retrieval',
+  //   abstract: 'A systematic empirical study of RAG pipeline design choices across three axes: document chunking strategy (fixed-size, sentence-aware, semantic), embedding model family (dense bi-encoder vs. sparse BM25 vs. hybrid), and reranker placement (cross-encoder vs. no reranking). Evaluated on a curated QA benchmark spanning technical documentation, scientific abstracts, and long-form prose. Faithfulness, answer relevancy, and context precision are measured using the RAGAS framework. Results show semantic chunking with cross-encoder reranking yields the highest faithfulness at the cost of 2.4× latency compared to fixed-size + BM25 baselines.',
+  //   stats: [
+  //     { val: '94.2%', label: 'Peak faithfulness (RAGAS)' },
+  //     { val: '2.4×', label: 'Latency overhead of best pipeline' },
+  //     { val: '12', label: 'Pipeline configurations benchmarked' }
+  //   ],
+  //   keywords: ['Retrieval-Augmented Generation','RAG','Chunking Strategy','Bi-Encoder','BM25','Cross-Encoder Reranking','RAGAS','LLM Evaluation'],
+  //   platform: 'Preprints.org',
+  //   preprintId: 'TBD',
+  //   doi: '#',
+  //   doiShort: 'Submission in progress',
+  //   author: { initials: 'RK', name: 'Rahul K P', qual: 'MSc Computer Science, Final Year', org: 'University of Calicut', email: 'rahul.kp.msc.cs@gmail.com' },
+  //   supervisor: { initials: 'SK', name: 'Dr. Seema S.', qual: 'MCA · MBA · MPhil · PhD', org: 'University of Calicut', email: 'seema.karuvarath@gmail.com' },
+  //   methodology: 'Twelve distinct RAG pipeline configurations are constructed by varying chunking strategy (fixed-size 256/512 tokens, sentence-aware, recursive semantic), embedding model (BGE-M3, E5-large, BM25), and reranking stage (none, cross-encoder BGE-reranker-v2). Each pipeline is evaluated on 300 QA pairs across three domain categories using the RAGAS evaluation suite measuring faithfulness, answer relevancy, context recall, and context precision. Latency profiling is performed under single-request and batch-10 conditions.',
+  //   reproducibility: 'All 12 pipeline configurations, evaluation scripts, and benchmark datasets are released. Experiments can be reproduced on CPU (slower) or with any CUDA-capable GPU. No proprietary data or model weights are required beyond publicly available HuggingFace checkpoints.',
+  //   contributions: ['12-config RAG benchmark','Semantic chunking analysis','Cross-encoder reranking study','RAGAS evaluation suite','Latency-faithfulness tradeoff'],
+  // }
 ];
 
 function renderPaper(p) {
@@ -800,7 +846,12 @@ function renderPaper(p) {
     </div>
     <div class="paper-cite-box">
       <div class="paper-cite-label"><i class="bi bi-quote me-1"></i>How to Cite</div>
-      <p class="paper-cite-text">Rahul K P (2026). <em>${p.title.split('–')[0].trim()}.</em> Preprints.org${p.preprintId !== 'TBD' ? `, ${p.preprintId}` : ''}. ${p.doi !== '#' ? `<a href="${p.doi}" target="_blank" rel="noopener">DOI: ${p.doiShort}</a>` : 'DOI pending.'}</p>
+      <p class="paper-cite-text">
+        <strong>Rahul K. P.</strong> & <strong>Seema S.</strong> (2026). 
+        <em>Design of a Neural Collaborative Filtering–Based Movie Recommendation System: From-Scratch Implementation, PyTorch Benchmarking and Production Architecture</em>.
+        <br>Preprints.org, 202605.0449.v1.<br> 
+        DOI: <a href="https://doi.org/10.20944/preprints202605.0449.v1" target="_blank">doi.org/10.20944/preprints202605.0449.v1</a>
+      </p>
     </div>
   </div>
 

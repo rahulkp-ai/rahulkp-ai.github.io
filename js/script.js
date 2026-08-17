@@ -39,16 +39,16 @@ const allProjects = [
       meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
       github      : '#', demo: '#', flagship: true
     },
-    {
-      title       : 'LLM-Powered Assistant',
-      desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
-      long        : 'A domain-specific conversational assistant leveraging fine-tuned large language models. The system uses retrieval-augmented generation (RAG) to ground responses in a curated knowledge base. Built on FastAPI with LangChain orchestration, it supports multi-turn memory, streaming responses, and structured output parsing. Features a vector store backed by Chroma for efficient semantic retrieval at scale.',
-      highlights  : ['RAG with vector search','Multi-turn conversation memory','Streaming responses','LangChain orchestration'],
-      tags        : ['LLM','FastAPI','LangChain'],
-      imgs        : ['images/projects/2.jpg','images/projects/5.jpg','images/projects/1.jpg'],
-      meta        : [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
-      github      : '#', demo: '#', flagship: true
-    },
+    // {
+    //   title       : 'LLM-Powered Assistant',
+    //   desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
+    //   long        : 'A domain-specific conversational assistant leveraging fine-tuned large language models. The system uses retrieval-augmented generation (RAG) to ground responses in a curated knowledge base. Built on FastAPI with LangChain orchestration, it supports multi-turn memory, streaming responses, and structured output parsing. Features a vector store backed by Chroma for efficient semantic retrieval at scale.',
+    //   highlights  : ['RAG with vector search','Multi-turn conversation memory','Streaming responses','LangChain orchestration'],
+    //   tags        : ['LLM','FastAPI','LangChain'],
+    //   imgs        : ['images/projects/2.jpg','images/projects/5.jpg','images/projects/1.jpg'],
+    //   meta        : [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
+    //   github      : '#', demo: '#', flagship: true
+    // },
     // desc : 84 words
     //  Ann-foundation'
     {

@@ -39,20 +39,21 @@ const allProjects = [
       meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
       github      : '#', demo: '#', flagship: true
     },
-    {
-      title       : 'LLM-Powered Assistant',
-      desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
-      long        : 'A domain-specific conversational assistant leveraging fine-tuned large language models. The system uses retrieval-augmented generation (RAG) to ground responses in a curated knowledge base. Built on FastAPI with LangChain orchestration, it supports multi-turn memory, streaming responses, and structured output parsing. Features a vector store backed by Chroma for efficient semantic retrieval at scale.',
-      highlights  : ['RAG with vector search','Multi-turn conversation memory','Streaming responses','LangChain orchestration'],
-      tags        : ['LLM','FastAPI','LangChain'],
-      imgs        : ['images/projects/2.jpg','images/projects/5.jpg','images/projects/1.jpg'],
-      meta        : [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
-      github      : '#', demo: '#', flagship: true
-    },
+    // {
+    //   title       : 'LLM-Powered Assistant',
+    //   desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
+    //   long        : 'A domain-specific conversational assistant leveraging fine-tuned large language models. The system uses retrieval-augmented generation (RAG) to ground responses in a curated knowledge base. Built on FastAPI with LangChain orchestration, it supports multi-turn memory, streaming responses, and structured output parsing. Features a vector store backed by Chroma for efficient semantic retrieval at scale.',
+    //   highlights  : ['RAG with vector search','Multi-turn conversation memory','Streaming responses','LangChain orchestration'],
+    //   tags        : ['LLM','FastAPI','LangChain'],
+    //   imgs        : ['images/projects/2.jpg','images/projects/5.jpg','images/projects/1.jpg'],
+    //   meta        : [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
+    //   github      : '#', demo: '#', flagship: true
+    // },
     // desc : 84 words
+   
     //  Ann-foundation'
     {
-      title       : 'Ann-foundation',
+      title       : 'ANN Foundation',
       desc        : 'Built an autograd engine and Multi-Layer Perceptron (MLP) from scratch in Python, implementing computational graphs, automatic differentiation, backpropagation, and gradient-based optimization without ML frameworks. Designed a dynamic computational graph to track mathematical operations and dependencies between values. Implemented reverse-mode automatic differentiation and recursive backpropagation for efficient gradient computation. Developed and trained an MLP using custom neural-network layers, activation functions, loss functions, and gradient-descent optimization.',
       long        : 'This project implements the core foundations of neural-network training from the ground up, without relying on high-level deep-learning frameworks. The custom autograd engine builds a dynamic computational graph during forward operations and records the relationships between values required for gradient computation. Reverse-mode automatic differentiation traverses this graph backward from the loss, recursively applying the chain rule to calculate gradients for trainable parameters. On top of the autograd system, a Multi-Layer Perceptron (MLP) was implemented with custom layers, activation functions, loss functions, and gradient-descent optimization for model training. The project provides a practical understanding of how automatic differentiation, backpropagation, parameter updates, and neural-network learning work internally at a fundamental level.',
       highlights  : [
@@ -79,6 +80,41 @@ const allProjects = [
                     ],
       github      : 'https://github.com/rahulkp-ai/ann-foundation', 
       demo        : 'https://huggingface.co/spaces/rahulkp-ai/ann-foundation', 
+      flagship    : false
+    },
+
+     // CNN Foundation
+    {
+      title       : 'CNN Foundation',
+      desc        : 'Built a convolutional neural network from scratch in pure Python and NumPy — implementing a Tensor autograd engine, im2col-based Conv2D, MaxPool2D, cross-entropy loss, and Adam optimizer without any ML frameworks. Designed a NumPy-backed Tensor class with reverse-mode automatic differentiation over N-dimensional arrays, including broadcasting-aware gradient accumulation. Implemented im2col/col2im convolution that reduces 2D convolution to a single matrix multiply, with analytically-derived and numerically-verified backward passes. Trained a two-block CNN (9,098 parameters) on MNIST achieving 98.6% test accuracy, with a live Gradio demo on Hugging Face Spaces.',
+      long        : 'This project lifts the scalar autograd engine from ann-foundation to N-dimensional arrays, implementing the full mathematical stack needed to train a CNN from first principles. The Tensor class wraps NumPy arrays and builds a dynamic computation graph during the forward pass, tracking operations and parent nodes for reverse-mode autodiff. The backward pass walks a topological ordering of the graph, applying the chain rule at each node with broadcasting-aware gradient accumulation — correctly summing gradients back to their original shapes after NumPy broadcasts them forward. Convolution is implemented via the im2col trick: receptive-field patches of the input are unrolled into columns of a matrix, reducing Conv2D to a single matmul whose backward pass is a standard matmul gradient composed with col2im (the scatter-add inverse of im2col). MaxPool2D records argmax positions on the forward pass and routes gradients exclusively to those positions on the backward pass. Cross-entropy loss uses the numerically-stable log-sum-exp formulation with a closed-form gradient. Three optimizers (SGD, SGD+Momentum, Adam) are implemented from their update equations. All 52 gradient checks compare analytical gradients against central-difference numerical approximations at 1e-5 tolerance. The CNN architecture (Conv2D→ReLU→MaxPool2D×2→Flatten→Linear) trains on 60,000 MNIST images with Adam in 5 epochs and achieves 98.6% test accuracy with 9,098 parameters.',
+      highlights  : [
+                      'NumPy Tensor Autograd Engine',
+                      'im2col Conv2D from Scratch',
+                      'Broadcasting-Aware Backprop',
+                      'Adam / SGD Optimizers',
+                      '52 Gradient-Verified Tests',
+                      '98.6% MNIST Accuracy',
+                      'Live Gradio Demo'
+                    ],
+
+      tags        : ['Python', 'NumPy', 'CNN', 'Autograd', 'Gradio', 'MNIST'],
+      imgs        : [
+                      'images/projects/Engineering/CNN-foundation-01.png',
+                      'images/projects/Engineering/CNN-foundation-02.png',
+                      'images/projects/Engineering/CNN-foundation-03.png',
+                      'images/projects/Engineering/CNN-foundation-04.png',
+                      'images/projects/Engineering/CNN-foundation-05.png',
+                      'images/projects/Engineering/CNN-foundation-06.png',
+                    ],
+
+      meta        : [
+                      {label:'Stack',  val:'Gradio, Hugging Face Spaces, Pytest'},
+                      {label:'Status', val:'Active & Deployed'},
+                      {label:'Domain', val:'Deep-Learning'}
+                    ],
+      github      : 'https://github.com/rahulkp-ai/cnn-foundation',
+      demo        : 'https://huggingface.co/spaces/rahulkp-ai/cnn-foundation',
       flagship    : false
     },
 

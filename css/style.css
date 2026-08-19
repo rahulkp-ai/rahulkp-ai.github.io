@@ -731,11 +731,11 @@ timeline {
 .paper-actions   { grid-column: 1 / -1; }
 
 @media (max-width: 768px) {
-  .paper-card { grid-template-columns: 1fr; }
+  .paper-card       { grid-template-columns: 1fr; }
   .paper-col-left,
-  .paper-col-right { grid-column: 1; grid-row: auto; }
-  .paper-col-left { padding-bottom: 0; }
-  .paper-col-right { padding-top: 0; }
+  .paper-col-right  { grid-column: 1; grid-row: auto; }
+  .paper-col-left   { padding-bottom: 0; }
+  .paper-col-right  { padding-top: 0; }
 }
 
 /* Card hover — pop forward and glow */
@@ -980,7 +980,7 @@ timeline {
 .proj-highlights li i { color: #22c55e; font-size: .8rem; }
 
 /* ================================================================
-   NEW: Research section extra rows
+   NEW: Research section 
    ================================================================ */
 .paper-method-row {
   margin-top: .9rem;
@@ -995,7 +995,7 @@ timeline {
   font-weight: 700; color: #a78bfa; margin-bottom: .5rem;
 }
 .paper-method-text {
-  font-size: .8rem; line-height: 1.65; color: var(--muted); margin: 0;
+  font-size: .9rem; line-height: 1.65; color: var(--muted); margin: 0;
 }
 .paper-repro-row {
   margin-top: .7rem; font-size: .8rem; line-height: 1.6;
@@ -1029,6 +1029,19 @@ timeline {
 .paper-cite-text em { color: var(--text); }
 .paper-cite-text a { color: #06b6d4; text-decoration: none; }
 .paper-cite-text a:hover { text-decoration: underline; }
+
+.paper-card {
+  min-height: 200px; 
+  /* display: flex; */
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+.paper-card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 /* ================================================================
    Smart Carousel — slide-track, strict clip, dots below

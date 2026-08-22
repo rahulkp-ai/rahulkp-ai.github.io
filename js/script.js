@@ -29,16 +29,16 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ===== Projects Data ===== */
 // All projects — first 2 = Flagship, rest = Engineering
 const allProjects = [
-    {
-      title       : 'AI Vision Pipeline',
-      desc        : 'End-to-end computer vision pipeline using OpenCV and PyTorch for real-time object detection.',
-      long        : 'A production-grade computer vision system capable of real-time multi-class object detection. Built using PyTorch for the neural backbone and OpenCV for frame capture and pre/post-processing. Achieves sub-30ms inference on GPU-accelerated hardware. The pipeline includes data augmentation, anchor-free detection heads, and a REST API for integration. Integrated with a streaming dashboard for live monitoring and alert thresholds.',
-      highlights  : ['Sub-30ms GPU inference','Anchor-free detection heads','REST API integration','Real-time monitoring dashboard'],
-      tags        : ['Python','PyTorch','OpenCV'],
-      imgs        : ['images/projects/1.jpg','images/projects/3.jpg','images/projects/4.jpg'],
-      meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
-      github      : '#', demo: '#', flagship: true
-    },
+    // {
+    //   title       : 'AI Vision Pipeline',
+    //   desc        : 'End-to-end computer vision pipeline using OpenCV and PyTorch for real-time object detection.',
+    //   long        : 'A production-grade computer vision system capable of real-time multi-class object detection. Built using PyTorch for the neural backbone and OpenCV for frame capture and pre/post-processing. Achieves sub-30ms inference on GPU-accelerated hardware. The pipeline includes data augmentation, anchor-free detection heads, and a REST API for integration. Integrated with a streaming dashboard for live monitoring and alert thresholds.',
+    //   highlights  : ['Sub-30ms GPU inference','Anchor-free detection heads','REST API integration','Real-time monitoring dashboard'],
+    //   tags        : ['Python','PyTorch','OpenCV'],
+    //   imgs        : ['images/projects/1.jpg','images/projects/3.jpg','images/projects/4.jpg'],
+    //   meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
+    //   github      : '#', demo: '#', flagship: true
+    // },
     // {
     //   title       : 'LLM-Powered Assistant',
     //   desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',

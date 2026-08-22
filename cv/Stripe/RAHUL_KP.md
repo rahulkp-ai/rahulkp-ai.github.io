@@ -9,9 +9,9 @@ format:
       - bottom=0.45in
       - left=0.55in
       - right=0.55in
-    fontsize: 9pt
-    linestretch: 0.92
-    colorlinks: true
+    fontsize: 10pt
+    linestretch: 1.1
+    colorlinks: True
     urlcolor: black
     pdf-engine: lualatex
     include-in-header:
@@ -56,7 +56,8 @@ format:
 
 ## Software Engineer Intern
 
-Tirur, Kerala, India ·[GitHub](https://github.com/rahulkp-ai) ·[LinkedIn](https://www.linkedin.com/in/rahulkp-ai/) ·[Portfolio](https://rahulkp-ai.netlify.app/#home) ·
+Tirur, Kerala, India· +917909152002
+[GitHub](https://github.com/rahulkp-ai) ·[LinkedIn](https://www.linkedin.com/in/rahulkp-ai/) ·[Portfolio](https://rahulkp-ai.netlify.app/#home)
 rahulkpkurup@gmail.com
 
 </center>

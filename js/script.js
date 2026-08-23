@@ -29,16 +29,16 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ===== Projects Data ===== */
 // All projects — first 2 = Flagship, rest = Engineering
 const allProjects = [
-    // {
-    //   title       : 'AI Vision Pipeline',
-    //   desc        : 'End-to-end computer vision pipeline using OpenCV and PyTorch for real-time object detection.',
-    //   long        : 'A production-grade computer vision system capable of real-time multi-class object detection. Built using PyTorch for the neural backbone and OpenCV for frame capture and pre/post-processing. Achieves sub-30ms inference on GPU-accelerated hardware. The pipeline includes data augmentation, anchor-free detection heads, and a REST API for integration. Integrated with a streaming dashboard for live monitoring and alert thresholds.',
-    //   highlights  : ['Sub-30ms GPU inference','Anchor-free detection heads','REST API integration','Real-time monitoring dashboard'],
-    //   tags        : ['Python','PyTorch','OpenCV'],
-    //   imgs        : ['images/projects/1.jpg','images/projects/3.jpg','images/projects/4.jpg'],
-    //   meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
-    //   github      : '#', demo: '#', flagship: true
-    // },
+    {
+      title       : 'AI Vision Pipeline',
+      desc        : 'End-to-end computer vision pipeline using OpenCV and PyTorch for real-time object detection.',
+      long        : 'A production-grade computer vision system capable of real-time multi-class object detection. Built using PyTorch for the neural backbone and OpenCV for frame capture and pre/post-processing. Achieves sub-30ms inference on GPU-accelerated hardware. The pipeline includes data augmentation, anchor-free detection heads, and a REST API for integration. Integrated with a streaming dashboard for live monitoring and alert thresholds.',
+      highlights  : ['Sub-30ms GPU inference','Anchor-free detection heads','REST API integration','Real-time monitoring dashboard'],
+      tags        : ['Python','PyTorch','OpenCV'],
+      imgs        : ['images/projects/1.jpg','images/projects/3.jpg','images/projects/4.jpg'],
+      meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
+      github      : '#', demo: '#', flagship: true
+    },
     // {
     //   title       : 'LLM-Powered Assistant',
     //   desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
@@ -1140,16 +1140,16 @@ const certCategories = [
       C('University of London','Geometry and Calculus for Computing','G9TYVT2D048H','bi-rulers'),
       C('HKUST','Matrix Algebra for Engineers','QDXTI5AWJ6BT','bi-grid-3x3-gap'),
   ]},
-  { n:8, title:'Problem Solving & Critical Thinking', icon:'bi-lightbulb', certs:[
-      C('LearnKartS','Master Problem Solving and Critical Thinking','TO1XYHKVBDML','bi-lightbulb'),
-  ]},
-  { n:9, title:'Professional Development & Communication', icon:'bi-people', certs:[
-      C('Google','Accelerate Your Job Search with AI','E15GYYHNXF7I','bi-google'),
-      C('Packt','Emotional Intelligence','OT8A9ERTF2EC','bi-heart-pulse'),
+  // { n:8, title:'Problem Solving & Critical Thinking', icon:'bi-lightbulb', certs:[
+  //     C('LearnKartS','Master Problem Solving and Critical Thinking','TO1XYHKVBDML','bi-lightbulb'),
+  // ]},
+  { n:8, title:'Problem Solving & Communication', icon:'bi-people', certs:[
+      C('LearnKartS','Problem Solving and Critical Thinking','TO1XYHKVBDML','bi-lightbulb'),
       C('Packt','Managing Time and Stress','09VS34R0FMQN','bi-hourglass-split'),
       C('Packt','Managing Conflict','TSSY21DDA3RV','bi-shield-check'),
+      C('Packt','Emotional Intelligence','OT8A9ERTF2EC','bi-heart-pulse'),
       C('UC San Diego','Communicating with the Public','5Z4BM6MEJGGZ','bi-megaphone'),
-      C('LearnKartS','Problem Solving and Critical Thinking','TO1XYHKVBDML','bi-lightbulb'),
+      C('Google','Accelerate Your Job Search with AI','E15GYYHNXF7I','bi-google'),
   ]}
 ];
 /* Level badge color */

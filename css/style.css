@@ -396,6 +396,14 @@ footer{border-top:1px solid var(--border);margin-top:60px}
 }
 .proj-meta-val { font-size:.9rem; font-weight:600; color:#fff; }
 .proj-modal-actions { display:flex; gap:.75rem; flex-wrap:wrap; }
+.proj-modal-demo-note {
+  margin-top: .9rem;
+  padding-top: .8rem;
+  border-top: 1px solid rgba(255,255,255,.08);
+  color: #94a3b8;
+  font-size: .8rem;
+  line-height: 1.5;
+}
 
 /* ====== Tech card redesigned (icon + name + level) ====== */
 .tech-scroller .cat-tech-card {

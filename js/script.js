@@ -29,16 +29,46 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ===== Projects Data ===== */
 // All projects — first 2 = Flagship, rest = Engineering
 const allProjects = [
-    {
-      title       : 'AI Vision Pipeline',
-      desc        : 'End-to-end computer vision pipeline using OpenCV and PyTorch for real-time object detection.',
-      long        : 'A production-grade computer vision system capable of real-time multi-class object detection. Built using PyTorch for the neural backbone and OpenCV for frame capture and pre/post-processing. Achieves sub-30ms inference on GPU-accelerated hardware. The pipeline includes data augmentation, anchor-free detection heads, and a REST API for integration. Integrated with a streaming dashboard for live monitoring and alert thresholds.',
-      highlights  : ['Sub-30ms GPU inference','Anchor-free detection heads','REST API integration','Real-time monitoring dashboard'],
-      tags        : ['Python','PyTorch','OpenCV'],
-      imgs        : ['images/projects/1.jpg','images/projects/3.jpg','images/projects/4.jpg'],
-      meta        : [{label:'Stack', val:'Python, PyTorch, OpenCV, FastAPI'},{label:'Status', val:'Production'},{label:'Domain', val:'Computer Vision'}],
-      github      : '#', demo: '#', flagship: true
-    },
+        {
+            title       : 'RAG Pro',
+            desc        : 'Production-grade RAG chatbot that answers questions directly from uploaded documents, with every response citing the exact source page. Supports four LLM providers (OpenAI, Anthropic, HuggingFace, Watsonx) behind a single pluggable interface, with MMR-based retrieval for balanced, non-redundant context. Built for real multi-user safety with per-session vector store isolation, and shipped with a full CI/CD pipeline — automated tests and Docker build validation on every push.',
+            long        : 'A production-grade Retrieval-Augmented Generation chatbot. Users upload a PDF, DOCX, or TXT file and ask questions answered directly from that document, with every answer citing the exact page it came from. Built with Flask, LangChain, and ChromaDB, with a pluggable LLM layer supporting OpenAI, Anthropic, HuggingFace, and IBM Watsonx. Uses MMR retrieval to balance relevance and diversity across chunks, per-session vector store isolation for safe multi-user access, and SHA-256 deduplication to skip re-processing identical uploads. Fully containerized with a multi-stage Docker build, deployed on Render with a GitHub Actions CI pipeline that runs the test suite and validates the Docker build on every push.',
+            highlights  : [
+                            'Page-cited', 
+                            'grounded answers',
+                            'Multi-provider LLM (OpenAI/Anthropic/HF)',
+                            'Session-isolated vector stores',
+                            'CI/CD with automated tests', 
+                            'Docker validation'
+                          ],
+            tags        : [
+                            'Python',
+                            'Flask',
+                            'LangChain',
+                            'ChromaDB'
+                          ],
+            imgs        : [
+                            'images/projects/Flagship/Rag_Pro01.png',
+                            'images/projects/Flagship/Rag_Pro02.png',
+                            'images/projects/Flagship/Rag_Pro03.png',
+                            'images/projects/Flagship/Rag_Pro04.png'
+                          ],
+            meta        : [
+                            {
+                              label:'Stack', 
+                              val:'Flask, LangChain, ChromaDB, Docker'
+                            },
+                            {
+                              label:'Status', val:'Production'
+                            },
+                            {
+                              label:'Domain', val:'GenAI / RAG'
+                            }
+                          ],
+            demoNote    : "Backend runs on Render's free tier and sleeps after 15 minutes of inactivity — the first login may take 10–30 seconds while it wakes up.",
+            github      : 'https://github.com/rahulkp-ai/rag-pro', 
+            demo        : 'https://rag-pro-xu7p.onrender.com/', flagship: true
+        },
     // {
     //   title       : 'LLM-Powered Assistant',
     //   desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
@@ -49,6 +79,7 @@ const allProjects = [
     //   meta        : [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
     //   github      : '#', demo: '#', flagship: true
     // },
+
     // desc : 84 words
    
     //  Ann-foundation'
@@ -356,11 +387,15 @@ function openProjectModal(p) {
             <span class="proj-cred-pass">${c.password}</span>
           </div>`).join('')}
       </div>
-      ${p.demoNote ? `<p class="proj-demo-note"><i class="bi bi-info-circle me-1"></i>${p.demoNote}</p>` : ''}
     </div>` : '');
   document.getElementById('proj-modal-actions').innerHTML = `
     <a href="${p.github}" class="btn btn-gradient" target="_blank"><i class="bi bi-github me-2"></i>View Code</a>
     <a href="${p.demo}" class="btn btn-glass" target="_blank"><i class="bi bi-box-arrow-up-right me-2"></i>Live Demo</a>`;
+  const demoNote = document.getElementById('proj-modal-demo-note');
+  demoNote.innerHTML = p.demoNote
+    ? `<i class="bi bi-info-circle me-1"></i>${p.demoNote}`
+    : '';
+  demoNote.hidden = !p.demoNote;
   pModal.classList.add('open');
 }
 

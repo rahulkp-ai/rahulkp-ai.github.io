@@ -129,7 +129,7 @@ const allProjects = [
                       'Live Gradio Demo'
                     ],
 
-      tags        : ['Python', 'NumPy', 'CNN', 'Autograd', 'Gradio', 'MNIST'],
+      tags        : ['Python', 'NumPy', 'CNN', 'Autograd', 'MNIST'],
       imgs        : [
                       'images/projects/Engineering/CNN-foundation-01.png',
                       'images/projects/Engineering/CNN-foundation-02.png',

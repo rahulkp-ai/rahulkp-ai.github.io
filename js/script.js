@@ -30,6 +30,50 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // All projects — first 2 = Flagship, rest = Engineering
 const allProjects = [
         {
+          title       : 'NCF Recommender',
+          desc        : 'Netflix-style movie recommender built around a from-scratch Neural Collaborative Filtering implementation (NumPy, manual backprop) benchmarked head-to-head against an identical PyTorch model. Hybrid engine blends cold-start and NCF scoring via a warmup-based alpha schedule, served through a FastAPI backend + model server, with Prometheus/Grafana observability and a full CI/CD pipeline — automated lint, tests, and Docker build validation on every push.',
+          long        : 'An MSc thesis project and production system built around a real empirical claim: that a from-scratch NumPy implementation of Neural Collaborative Filtering converges to the same predictive performance as an autograd-based PyTorch implementation, at the cost of training speed. Both models share identical architecture (embedding dim 32, hidden layers [64, 32], Adam optimizer, BCE loss with 1:4 negative sampling) and are evaluated under the leave-one-out protocol from He et al. (2017) using Hit@10 and NDCG@10. A hybrid recommendation engine blends popularity/content-based cold-start scoring with NCF scoring via an interaction-count-based alpha schedule, exposed through a FastAPI backend and a separately deployable FastAPI model server, backed by PostgreSQL and a Next.js Netflix-style frontend with TMDB poster integration. The full stack — five services locally via Docker Compose, or split across Render, Vercel, and Neon Postgres in production — is instrumented with Prometheus and two auto-provisioned Grafana dashboards (system health and recommendation-strategy breakdown), and gated by a GitHub Actions pipeline running ruff, pytest with a live Postgres service container, and a Docker Compose config validation step.',
+          highlights  : [
+                          'Scratch NumPy NCF vs PyTorch, benchmarked head-to-head',
+                          'Hybrid cold-start + NCF engine with warmup alpha schedule',
+                          'Prometheus + Grafana, auto-provisioned dashboards',
+                          'Leave-one-out eval (He et al. 2017) — Hit@10 / NDCG@10',
+                          'CI/CD with live-Postgres integration tests',
+                          'Deployed across Render, Vercel, and Neon Postgres'
+                        ],
+          tags        : [
+                          'Python',
+                          'NumPy',
+                          'PyTorch',
+                          'FastAPI',
+                          'Next.js',
+                          'PostgreSQL'
+                          ],
+          imgs        : [
+                          'images/projects/Flagship/NCF01.png',
+                          'images/projects/Flagship/NCF02.png',
+                          'images/projects/Flagship/NCF03.png',
+                          'images/projects/Flagship/NCF04.png',
+                          'images/projects/Flagship/NCF05.png'
+                        ],
+          meta        : [
+                          {
+                            label:'Stack', 
+                            val:'FastAPI, Next.js, PostgreSQL, Docker, Grafana'
+                          },
+                          {
+                            label:'Status', val:'Production'
+                          },
+                          {
+                            label:'Domain', val:'Recommender Systems / MLOps'
+                          }
+                        ],
+            demoNote    : "The backend and model server are deployed on Render's free tier and automatically go to sleep after 15 minutes of inactivity. The initial request may take 30–60 seconds to wake up. If movie posters or recommendations don't load immediately, please wait 1–2 minutes and refresh the page 2–3 times while the microservices spin up.",
+            github      : 'https://github.com/rahulkp-ai/NCF-Recommender-System', 
+            demo        : 'https://ncf-frontend.vercel.app/', flagship: true
+        },
+        
+        {
             title       : 'RAG Pro',
             desc        : 'Production-grade RAG chatbot that answers questions directly from uploaded documents, with every response citing the exact source page. Supports four LLM providers (OpenAI, Anthropic, HuggingFace, Watsonx) behind a single pluggable interface, with MMR-based retrieval for balanced, non-redundant context. Built for real multi-user safety with per-session vector store isolation, and shipped with a full CI/CD pipeline — automated tests and Docker build validation on every push.',
             long        : 'A production-grade Retrieval-Augmented Generation chatbot. Users upload a PDF, DOCX, or TXT file and ask questions answered directly from that document, with every answer citing the exact page it came from. Built with Flask, LangChain, and ChromaDB, with a pluggable LLM layer supporting OpenAI, Anthropic, HuggingFace, and IBM Watsonx. Uses MMR retrieval to balance relevance and diversity across chunks, per-session vector store isolation for safe multi-user access, and SHA-256 deduplication to skip re-processing identical uploads. Fully containerized with a multi-stage Docker build, deployed on Render with a GitHub Actions CI pipeline that runs the test suite and validates the Docker build on every push.',
@@ -69,16 +113,6 @@ const allProjects = [
             github      : 'https://github.com/rahulkp-ai/rag-pro', 
             demo        : 'https://rag-pro-xu7p.onrender.com/', flagship: true
         },
-    // {
-    //   title       : 'LLM-Powered Assistant',
-    //   desc        : 'Conversational AI assistant built with fine-tuned LLMs and FastAPI backend.',
-    //   long        : 'A domain-specific conversational assistant leveraging fine-tuned large language models. The system uses retrieval-augmented generation (RAG) to ground responses in a curated knowledge base. Built on FastAPI with LangChain orchestration, it supports multi-turn memory, streaming responses, and structured output parsing. Features a vector store backed by Chroma for efficient semantic retrieval at scale.',
-    //   highlights  : ['RAG with vector search','Multi-turn conversation memory','Streaming responses','LangChain orchestration'],
-    //   tags        : ['LLM','FastAPI','LangChain'],
-    //   imgs        : ['images/projects/2.jpg','images/projects/5.jpg','images/projects/1.jpg'],
-    //   meta        : [{label:'Stack', val:'Python, LangChain, FastAPI, OpenAI'},{label:'Status', val:'Deployed'},{label:'Domain', val:'NLP / LLMs'}],
-    //   github      : '#', demo: '#', flagship: true
-    // },
 
     // desc : 84 words
    
@@ -758,7 +792,8 @@ document.getElementById('exp-scroller').innerHTML = experiences.map((e, i) => `
 /* ===== Research Section ===== */
 const papers = [
 {
-  status          : 'Submitted',
+  status          : 'Under Review',
+  paperId         : 'TKDE-2026-08-3131',
   type            : 'Regular Article',
   title           : 'Design of a Neural Collaborative Filtering–Based Movie Recommendation System: From-Scratch Implementation, PyTorch Benchmarking, and Production Architecture',
   subject         : 'Knowledge and Data Engineering — Recommender Systems, Deep Learning & Machine Learning',
@@ -800,7 +835,7 @@ const papers = [
                     },
 
   methodology     : 'The study implements Neural Collaborative Filtering from the ground up using NumPy with analytically derived gradients, then replicates the same architecture in PyTorch leveraging Apple Silicon MPS acceleration. Both implementations are rigorously benchmarked on the MovieLens 1M dataset using leave-one-out evaluation. A hybrid cold-start module blending NCF scores with content/popularity signals supplements the collaborative signal for new users, and the system is deployed as a four-service microservices stack with a FastAPI gateway, an isolated PyTorch inference server, PostgreSQL, Redis caching, and a Netflix-style TMDB-integrated frontend.',
-  reproducibility : 'Submitted as a Single Anonymized Regular Article under the Traditional/Subscription track. Also available as an open-access CC BY 4.0 preprint on Preprints.org.',
+  reproducibility : 'Submitted as a Single Anonymized Regular Article under the Traditional/Subscription track ($0 fee). Also available as an open-access CC BY 4.0 preprint on Preprints.org.',
   
   contributions   : [
                       'From-scratch NCF',
@@ -810,28 +845,6 @@ const papers = [
                       'Benchmarking Suite'
                     ],
 }
-  // {
-  //   status: 'Preprint',
-  //   type: 'Article',
-  //   title: 'Benchmarking Retrieval-Augmented Generation Pipelines: Chunking Strategies, Embedding Models, and Reranker Impact on Answer Faithfulness',
-  //   subject: 'Computer Science & Mathematics — Natural Language Processing & Information Retrieval',
-  //   abstract: 'A systematic empirical study of RAG pipeline design choices across three axes: document chunking strategy (fixed-size, sentence-aware, semantic), embedding model family (dense bi-encoder vs. sparse BM25 vs. hybrid), and reranker placement (cross-encoder vs. no reranking). Evaluated on a curated QA benchmark spanning technical documentation, scientific abstracts, and long-form prose. Faithfulness, answer relevancy, and context precision are measured using the RAGAS framework. Results show semantic chunking with cross-encoder reranking yields the highest faithfulness at the cost of 2.4× latency compared to fixed-size + BM25 baselines.',
-  //   stats: [
-  //     { val: '94.2%', label: 'Peak faithfulness (RAGAS)' },
-  //     { val: '2.4×', label: 'Latency overhead of best pipeline' },
-  //     { val: '12', label: 'Pipeline configurations benchmarked' }
-  //   ],
-  //   keywords: ['Retrieval-Augmented Generation','RAG','Chunking Strategy','Bi-Encoder','BM25','Cross-Encoder Reranking','RAGAS','LLM Evaluation'],
-  //   platform: 'Preprints.org',
-  //   preprintId: 'TBD',
-  //   doi: '#',
-  //   doiShort: 'Submission in progress',
-  //   author: { initials: 'RK', name: 'Rahul K P', qual: 'MSc Computer Science, Final Year', org: 'University of Calicut', email: 'rahul.kp.msc.cs@gmail.com' },
-  //   supervisor: { initials: 'SK', name: 'Dr. Seema S.', qual: 'MCA · MBA · MPhil · PhD', org: 'University of Calicut', email: 'seema.karuvarath@gmail.com' },
-  //   methodology: 'Twelve distinct RAG pipeline configurations are constructed by varying chunking strategy (fixed-size 256/512 tokens, sentence-aware, recursive semantic), embedding model (BGE-M3, E5-large, BM25), and reranking stage (none, cross-encoder BGE-reranker-v2). Each pipeline is evaluated on 300 QA pairs across three domain categories using the RAGAS evaluation suite measuring faithfulness, answer relevancy, context recall, and context precision. Latency profiling is performed under single-request and batch-10 conditions.',
-  //   reproducibility: 'All 12 pipeline configurations, evaluation scripts, and benchmark datasets are released. Experiments can be reproduced on CPU (slower) or with any CUDA-capable GPU. No proprietary data or model weights are required beyond publicly available HuggingFace checkpoints.',
-  //   contributions: ['12-config RAG benchmark','Semantic chunking analysis','Cross-encoder reranking study','RAGAS evaluation suite','Latency-faithfulness tradeoff'],
-  // }
 ];
 
 function renderPaper(p) {
@@ -867,8 +880,8 @@ function renderPaper(p) {
   <div class="paper-col-right">
     <div class="meta-grid">
       <div class="meta-cell"><div class="meta-label">Platform</div><div class="meta-value">${p.platform}</div></div>
-      <div class="meta-cell"><div class="meta-label">Preprint ID</div><div class="meta-value">${p.preprintId}</div></div>
-      <div class="meta-cell" style="grid-column:1/-1"><div class="meta-label">DOI</div><div class="meta-value">${p.doi !== '#' ? `<a href="${p.doi}" target="_blank" rel="noopener">${p.doiShort}</a>` : p.doiShort}</div></div>
+      <div class="meta-cell"><div class="meta-label">Manuscript ID</div><div class="meta-value">${p.paperId}</div></div>
+      <div class="meta-cell" style="grid-column:1/-1"><div class="meta-label">Preprint DOI</div><div class="meta-value">${p.doi !== '#' ? `<a href="${p.doi}" target="_blank" rel="noopener">${p.doiShort}</a>` : p.doiShort}</div></div>
     </div>
     <div class="paper-contrib-row">
       <div class="paper-contrib-label">Key Contributions</div>
@@ -902,13 +915,13 @@ function renderPaper(p) {
     </div>
     <div class="paper-cite-box">
       <div class="paper-cite-label"><i class="bi bi-quote me-1"></i>How to Cite</div>
-      <p class="paper-cite-text">Rahul K P (2026). <em>${p.title.split('–')[0].trim()}.</em> Preprints.org${p.preprintId !== 'TBD' ? `, ${p.preprintId}` : ''}. ${p.doi !== '#' ? `<a href="${p.doi}" target="_blank" rel="noopener">DOI: ${p.doiShort}</a>` : 'DOI pending.'}</p>
+      <p class="paper-cite-text">Kurup, R. K. P., & Seema, S. (2026). <em>${p.title.split('–')[0].trim()}.</em> Preprints.org${p.preprintId !== 'TBD' ? `, ${p.preprintId}` : ''}. ${p.doi !== '#' ? `<a href="${p.doi}" target="_blank" rel="noopener">DOI: ${p.doiShort}</a>` : 'DOI pending.'}</p>
     </div>
   </div>
 
   <div class="paper-actions">
-    ${p.doi !== '#' ? `<a class="btn-primary" href="${p.doi}" target="_blank" rel="noopener">View Publication ↗</a><a class="btn-ghost" href="${p.doi}" target="_blank" rel="noopener">Copy DOI</a>` : `<span class="btn-ghost" style="opacity:.6;cursor:default"><i class="bi bi-clock me-1"></i>Submission in Progress</span>`}
-    <span class="id-chip">Preprint <b>#${p.preprintId}</b></span>
+    ${p.doi !== '#' ? `<a class="btn-primary" href="${p.doi}" target="_blank" rel="noopener">View Preprint ↗</a><a class="btn-ghost" href="${p.doi}" target="_blank" rel="noopener">Copy DOI</a>` : `<span class="btn-ghost" style="opacity:.6;cursor:default"><i class="bi bi-clock me-1"></i>Submission in Progress</span>`}
+    <span class="id-chip">IEEE <b>#${p.paperId}</b></span>
   </div>
 </div>`;
 }
@@ -979,8 +992,6 @@ document.getElementById('research-grid').innerHTML = papers.map(renderPaper).joi
   let rt;
   window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(reinit, 180); });
 })();
-
-
 /* ===== TECH STACK CATEGORIES (10) ===== */
 const techCategories = [
   { n:1, title:'AI & Gen AI', icon:'bi-cpu',

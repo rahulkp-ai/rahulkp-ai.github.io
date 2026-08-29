@@ -129,7 +129,7 @@ const allProjects = [
                       'Live Gradio Demo'
                     ],
 
-      tags        : ['Python', 'NumPy', 'CNN', 'Autograd', 'Gradio', 'MNIST'],
+      tags        : ['Python', 'NumPy', 'CNN', 'Autograd', 'MNIST'],
       imgs        : [
                       'images/projects/Engineering/CNN-foundation-01.png',
                       'images/projects/Engineering/CNN-foundation-02.png',
@@ -758,10 +758,10 @@ document.getElementById('exp-scroller').innerHTML = experiences.map((e, i) => `
 /* ===== Research Section ===== */
 const papers = [
 {
-  status          : 'Preprint',
-  type            : 'Article',
-  title           : 'Design of a Neural Collaborative Filtering–Based Movie Recommendation System: From-Scratch Implementation, PyTorch Benchmarking and Production Architecture',
-  subject         : 'Computer Science & Mathematics — Artificial Intelligence and Machine Learning',
+  status          : 'Submitted',
+  type            : 'Regular Article',
+  title           : 'Design of a Neural Collaborative Filtering–Based Movie Recommendation System: From-Scratch Implementation, PyTorch Benchmarking, and Production Architecture',
+  subject         : 'Knowledge and Data Engineering — Recommender Systems, Deep Learning & Machine Learning',
   abstract        : 'A complete neural collaborative filtering system for movie recommendations, built two ways: a from-scratch NumPy implementation with hand-derived backpropagation, and an optimized PyTorch version accelerated on Apple Silicon (MPS). Benchmarked on MovieLens, then deployed as a production microservices stack with a FastAPI gateway, a dedicated inference server, PostgreSQL, and a Netflix-style frontend with a hybrid cold-start module.',
   
   stats           : [
@@ -771,17 +771,14 @@ const papers = [
                     ],
 
   keywords        : [
-                      'Neural Collaborative Filtering',
                       'Recommender Systems',
-                      'Matrix Factorization',
-                      'Implicit Feedback',
+                      'Collaborative Filtering',
                       'Deep Learning',
-                      'Microservices Architecture',
-                      'Scalable Deployment',
-                      'MovieLens'
+                      'Matrix Factorization',
+                      'Machine Learning'
                     ],
 
-  platform        : 'Preprints.org',
+  platform        : 'IEEE Transactions on Knowledge and Data Engineering (TKDE)',
   preprintId      : '212150',
   doi             : 'https://doi.org/10.20944/preprints202605.0449.v1',
   doiShort        : 'doi.org/10.20944/preprints202605.0449.v1',
@@ -803,7 +800,7 @@ const papers = [
                     },
 
   methodology     : 'The study implements Neural Collaborative Filtering from the ground up using NumPy with analytically derived gradients, then replicates the same architecture in PyTorch leveraging Apple Silicon MPS acceleration. Both implementations are rigorously benchmarked on the MovieLens 1M dataset using leave-one-out evaluation. A hybrid cold-start module blending NCF scores with content/popularity signals supplements the collaborative signal for new users, and the system is deployed as a four-service microservices stack with a FastAPI gateway, an isolated PyTorch inference server, PostgreSQL, Redis caching, and a Netflix-style TMDB-integrated frontend.',
-  reproducibility : 'Published as an open-access CC BY 4.0 preprint on Preprints.org (MDPI). The from-scratch NumPy baseline requires no GPU; the PyTorch variant targets MPS/CUDA.',
+  reproducibility : 'Submitted as a Single Anonymized Regular Article under the Traditional/Subscription track. Also available as an open-access CC BY 4.0 preprint on Preprints.org.',
   
   contributions   : [
                       'From-scratch NCF',
@@ -812,7 +809,7 @@ const papers = [
                       'Microservices Deploy',
                       'Benchmarking Suite'
                     ],
-},
+}
   // {
   //   status: 'Preprint',
   //   type: 'Article',

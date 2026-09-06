@@ -218,7 +218,7 @@ const allProjects = [
                       { role: "Mentor",  email: "mentor.rajesh@test.com", password: "password" },
                       { role: "Admin",   email: "admin@rankscript.com",   password: "password" }
                     ],
-      demoNote    : "Backend runs on Render's free tier and sleeps after 15 minutes of inactivity — the first login may take 10–30 seconds while it wakes up.",
+      demoNote    : "Backend runs on Render's free tier and sleeps after 15 minutes of inactivity — the first login may take 1-3 minutes while it wakes up.",
 
       github      : 'https://github.com/rahulkp-ai/rankscript',
       demo        : 'https://rankscript.vercel.app/auth/login',

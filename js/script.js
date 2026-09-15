@@ -1119,17 +1119,20 @@ const techCategories = [
 ];
 
 /* ===== Certification helpers ===== */
+const sanitizeFileName = name => name.replace(/\//g, '-').replace(/:/g, ' -').replace(/\|/g, '-').trim().replace(/\s+/g, '_');
+
 const cUrl  = id => `https://www.coursera.org/account/accomplishments/verify/${id}`;
 const cProf = id => `https://www.coursera.org/account/accomplishments/professional-cert/${id}`;
 const cSpec = id => `https://www.coursera.org/account/accomplishments/specialization/${id}`;
-const C  = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cUrl(id)});
-const CP = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cProf(id)});
-const CS = (issuer,name,id,icon='bi-award') => ({issuer,name,id,icon,url:cSpec(id)});
+const C  = (issuer,name,id,icon='bi-award',file=null) => ({issuer,name,id,icon,url:cUrl(id),file:file||`${sanitizeFileName(name)}.jpeg`});
+const CP = (issuer,name,id,icon='bi-award',file=null) => ({issuer,name,id,icon,url:cProf(id),file:file||`${sanitizeFileName(name)}.jpeg`});
+const CS = (issuer,name,id,icon='bi-award',file=null) => ({issuer,name,id,icon,url:cSpec(id),file:file||`${sanitizeFileName(name)}.jpeg`});
+const C_CUSTOM = (issuer,name,url,icon='bi-award',file=null) => ({issuer,name,id:'',icon,url,file:file||`${sanitizeFileName(name)}.png`});
 
 
 /* ===== CERTIFICATION CATEGORIES (10) ===== */
 const certCategories = [
-  { n:1, title:'Artificial Intelligence & Generative AI', icon:'bi-cpu', certs:[
+  { n:1, folder:'ai_genai', title:'Artificial Intelligence & Generative AI', icon:'bi-cpu', certs:[
       CP('IBM','Generative AI Engineering — Professional Certificate','CG66922OUOBS','bi-award'),
       C('Adobe','Prompting for Generative AI','XW9JINKBBQ52','bi-magic'),
       C('Google','Introduction to AI','BU81GMHJ110I','bi-google'),
@@ -1152,13 +1155,14 @@ const certCategories = [
       C('Google Cloud','Transformer Models and BERT Model','K7ZQ0AF1Q2SF','bi-cloud'),
       
   ]},
-  { n:2, title:'Machine Learning & Deep Learning', icon:'bi-diagram-3', certs:[
+  { n:2, folder:'ml_deep_learning', title:'Machine Learning & Deep Learning', icon:'bi-diagram-3', certs:[
       C('DeepLearning.AI','Neural Networks and Deep Learning','DPT72QDPLAZV','bi-cpu'),
+      C_CUSTOM('ISRO','AI/ML for Geodata Analytics','https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php','bi-globe'),
   ]},
-  { n:3, title:'Data Science & Analytics', icon:'bi-bar-chart-line', certs:[
+  { n:3, folder:'data_science_analytics', title:'Data Science & Analytics', icon:'bi-bar-chart-line', certs:[
       C('UC Davis','SQL for Data Science','FD4Q2PG62LDM','bi-database'),
   ]},
-  { n:4, title:'MLOps & AI Infrastructure', icon:'bi-gear-wide-connected', certs:[
+  { n:4, folder:'mlops_ai_infrastructure', title:'MLOps & AI Infrastructure', icon:'bi-gear-wide-connected', certs:[
       CS('Duke University','MLOps | Machine Learning Operations Specialization','0MS5AHGLJJGH','bi-gear-wide-connected'),
       CS('Google Cloud','Google Cloud Al Infrastructure Specialization','KQIDFRTDW199','bi-cloud'),
       C('LearnKartS','Docker Fundamentals','8V4N8RBXGOS6','bi-box-seam'),
@@ -1173,11 +1177,11 @@ const certCategories = [
 
 
   ]},
-  { n:6, title:'Software Engineering & Programming', icon:'bi-code-slash', certs:[
+  { n:6, folder:'software_engineering_programming', title:'Software Engineering & Programming', icon:'bi-code-slash', certs:[
       C('Microsoft','Advanced C++ Programming and Modern Practices','V54MKYHP7ARC','bi-microsoft'),
       C('Microsoft','Introduction to GitHub Copilot','EZJPDEKEOVM1','bi-microsoft'),
   ]},
-  { n:7, title:'Mathematics for AI', icon:'bi-calculator', certs:[
+  { n:7, folder:'mathematics_for_ai', title:'Mathematics for AI', icon:'bi-calculator', certs:[
       C('The University of Sydney','Introduction to Calculus','E9UQH794HR4X','bi-calculator'),
       C('The University of Sydney','Introduction to Advanced Calculus','XZHYJ6U5P3OS','bi-calculator'),
       C('University of London','Geometry and Calculus for Computing','G9TYVT2D048H','bi-rulers'),
@@ -1186,7 +1190,7 @@ const certCategories = [
   // { n:8, title:'Problem Solving & Critical Thinking', icon:'bi-lightbulb', certs:[
   //     C('LearnKartS','Master Problem Solving and Critical Thinking','TO1XYHKVBDML','bi-lightbulb'),
   // ]},
-  { n:8, title:'Problem Solving & Communication', icon:'bi-people', certs:[
+  { n:8, folder:'problem_solving_communication', title:'Problem Solving & Communication', icon:'bi-people', certs:[
       C('LearnKartS','Problem Solving and Critical Thinking','TO1XYHKVBDML','bi-lightbulb'),
       C('Packt','Managing Time and Stress','09VS34R0FMQN','bi-hourglass-split'),
       C('Packt','Managing Conflict','TSSY21DDA3RV','bi-shield-check'),
@@ -1278,10 +1282,12 @@ const techCard = (item) => {
   </div>`;
 };
 
-const certCard = c => `
+const certCard = (c, folder) => {
+  const relPath = folder ? `${folder}/${c.file}` : c.file;
+  return `
   <div class="cat-cert-card glass">
-    <button class="cert-preview" data-img="images/certs/${c.id}.jpeg" data-title="${c.name.replace(/"/g,'&quot;')}" data-issuer="${c.issuer}" data-url="${c.url}" aria-label="Preview ${c.name}">
-      <img src="images/certs/${c.id}.jpeg" alt="${c.name}" loading="lazy" onerror="this.style.display='none'"/>
+    <button class="cert-preview" data-img="images/certs/${relPath}" data-title="${c.name.replace(/"/g,'&quot;')}" data-issuer="${c.issuer}" data-url="${c.url}" aria-label="Preview ${c.name}">
+      <img src="images/certs/${relPath}" alt="${c.name}" loading="lazy" onerror="this.style.display='none'"/>
       <span class="cert-zoom"><i class="bi bi-arrows-fullscreen"></i> Preview</span>
     </button>
     <div class="cert-body">
@@ -1289,14 +1295,15 @@ const certCard = c => `
       <h6>${c.name}</h6>
       <div class="cert-actions">
         <a href="${c.url}" target="_blank" rel="noopener" class="verify-btn"><i class="bi bi-patch-check-fill"></i> Verify</a>
-        <a href="images/certs/${c.id}.jpeg" download="${c.issuer}-${c.id}.jpeg" class="download-btn" title="Download certificate"><i class="bi bi-download"></i></a>
+        <a href="images/certs/${relPath}" download="${c.file}" class="download-btn" title="Download certificate"><i class="bi bi-download"></i></a>
       </div>
     </div>
   </div>`;
+};
 
 const categoryBlock = (cat, kind) => {
   const items = kind === 'tech' ? cat.items : cat.certs;
-  const renderer = kind === 'tech' ? techCard : certCard;
+  const renderer = kind === 'tech' ? techCard : (c => certCard(c, cat.folder));
   const countLabel = kind === 'tech'
     ? `${items.length} skill${items.length!==1?'s':''}`
     : `${items.length} cert${items.length!==1?'s':''}`;
@@ -1543,6 +1550,7 @@ document.addEventListener('click', e=>{
   cModal.querySelector('.cert-modal-verify').href = url;
   const dl = cModal.querySelector('.cert-modal-download');
   dl.href = img;
-  dl.setAttribute('download', `${issuer}-${title}.jpeg`);
+  const filename = img.substring(img.lastIndexOf('/') + 1);
+  dl.setAttribute('download', filename);
   cModal.classList.add('open');
 });
